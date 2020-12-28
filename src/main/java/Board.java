@@ -14,7 +14,7 @@ public class Board {
     }
 
     // Methods
-    private void initSquares() {
+    private void updateSquares() {
         for (int i = 1; i < numRows; i++) {
             for (int j = 1; j < numCols; j++) {
 

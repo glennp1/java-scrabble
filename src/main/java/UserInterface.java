@@ -8,8 +8,11 @@ public class UserInterface {
 
     // Constructor
 
+    public UserInterface() {
+    }
+
     // Methods
-    public void renderGame(Game game) {
+    public void renderBoard(Board board) {
 
 
 
@@ -39,9 +42,20 @@ public class UserInterface {
 
     }
 
-    public void processTurn(Player player) {
+    public void renderPlayerRack(Player player) {
+        System.out.print("Player " + player.getNumber() + "'s rack: ");
 
-        // todo
+        System.out.println(player.getRack().toString());
+    }
+
+    // todo introduce new move class
+    public void handleNewMoveInput() {
+
+    }
+
+    public void renderPlayerTurn(Player player) {
+
+
 
         Scanner scanner = new Scanner(System.in); // Create a Scanner object
 

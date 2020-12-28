@@ -5,9 +5,8 @@ import java.util.LinkedList;
 public class Bag {
 
     // Attributes
-    private final int BAG_SIZE = 100;
-
-    private LinkedList<Tile> tiles = new LinkedList<Tile>();
+    private final int MAX_BAG_SIZE = 100;
+    private final LinkedList<Tile> tilesInBag = new LinkedList<Tile>();
 
 
     // Constructor
@@ -19,16 +18,16 @@ public class Bag {
 
     // Methods
     private void initialiseTiles(){
-        for (int i = 0; i < BAG_SIZE; i++) {
-            tiles.add(new Tile());
+        for (int i = 0; i < MAX_BAG_SIZE; i++) {
+            tilesInBag.add(new Tile());
         }
     }
 
     public Tile removeTile(){
-        return (tiles.remove());
+        return (tilesInBag.remove());
     }
 
-    public boolean isEmpty(){
-        return (tiles.isEmpty());
+    public boolean isNotEmpty(){
+        return (!tilesInBag.isEmpty());
     }
 }
