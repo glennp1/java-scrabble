@@ -55,7 +55,13 @@ public class DisplayFacade {
      *
      * @return a move todo
      */
-    public Move requestMoveInput() {
-        return new Move();
+    public void requestMoveInput() {
+
+
+        System.out.println(moveInput.inputPass());
+        System.out.println(moveInput.inputCharacter());
+        System.out.println(moveInput.inputRow());
+        System.out.println(moveInput.inputCol());
+        System.out.println(moveInput.inputTurnOver());
     }
 }

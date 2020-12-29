@@ -22,7 +22,7 @@ public class BoardDisplay {
         // todo develop board template
         System.out.print(
             "     ________ Board-Start ________ \n" +
-            "     A B C D E F G H I J K L M N O \n" +
+            "     a b c d e f g h i j k l m n o \n" +
             "     _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n" +
             "  1 |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|\n" +
             "  2 |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|\n" +
@@ -53,12 +53,9 @@ public class BoardDisplay {
     public void renderPlayerTurn(Player player) {
 
 
-
-        Scanner scanner = new Scanner(System.in); // Create a Scanner object
-
         System.out.println("It is Player 1's turn.");
 
-        String move = scanner.nextLine(); // Read user input
+
 
     }
 }

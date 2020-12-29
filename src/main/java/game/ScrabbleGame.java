@@ -39,6 +39,8 @@ public class ScrabbleGame {
         displayFacade.renderPlayerRack(players.get(0));
         displayFacade.renderPlayerRack(players.get(1));
 
+        displayFacade.requestMoveInput();
+
     }
 
     public Bag getBag() {
