@@ -1,7 +1,8 @@
-package main.java;
+package main.java.game;
+
+import main.java.display.BoardDisplay;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class ScrabbleGame {
 
@@ -10,7 +11,7 @@ public class ScrabbleGame {
     private final Board board = new Board();
 
     private final Bag bag = new Bag();
-    private final UserInterface userInterface = new UserInterface();
+    private final DisplayFacade displayFacade = DisplayFacade.getInstance();
 
     private final int NUM_PLAYERS = 2;
     private final ArrayList<Player> players = new ArrayList<Player>();
@@ -18,7 +19,6 @@ public class ScrabbleGame {
     // Constructor
 
     public ScrabbleGame() {
-        System.out.println("Hello World !");
 
         initialiseGame();
 
@@ -29,16 +29,15 @@ public class ScrabbleGame {
     private void initialiseGame() {
 
         // Add each player to the game
-        for (int i=1; i <= NUM_PLAYERS; i++) {
+        for (int i = 1; i <= NUM_PLAYERS; i++) {
             players.add(new Player(this, i));
         }
 
         // Display the board
-        userInterface.renderBoard(board);
+        displayFacade.renderBoard(board);
 
-        // Display each player's rack
-        userInterface.renderPlayerRack(players.get(0));
-        userInterface.renderPlayerRack(players.get(1));
+        displayFacade.renderPlayerRack(players.get(0));
+        displayFacade.renderPlayerRack(players.get(1));
 
     }
 

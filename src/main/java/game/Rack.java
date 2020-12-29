@@ -1,4 +1,4 @@
-package main.java;
+package main.java.game;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,7 @@ public class Rack {
     // Attributes
     private final int MAX_RACK_SIZE = 7;
 
-    private final ArrayList<Tile> tilesInRack = new ArrayList<Tile>();
+    private final ArrayList<Tile> tiles = new ArrayList<Tile>();
 
     // Constructor
     public Rack() {
@@ -21,7 +21,7 @@ public class Rack {
      */
     public Tile getTileByChar(char characterToGet) {
         // Look for a tile in the ArrayList tiles that matches the character
-        for (Tile tile : tilesInRack) {
+        for (Tile tile : tiles) {
             if (tile.getCharacter() == characterToGet) {
 
                 // Return the tile
@@ -39,7 +39,7 @@ public class Rack {
      * @param tilesToRemove the tiles indicated for removal
      */
     public void removeManyTiles(ArrayList<Tile> tilesToRemove){
-        tilesInRack.removeAll(tilesToRemove);
+        tiles.removeAll(tilesToRemove);
     }
 
     /**
@@ -48,36 +48,7 @@ public class Rack {
      * @param tileToAdd the specified tile to be added to the rack
      */
     public void addTile(Tile tileToAdd) {
-        tilesInRack.add(tileToAdd);
-    }
-
-    /** Returns the tiles in the rack as a string
-     *
-     * @return the tiles formatted as a string
-     */
-    public String toString() {
-
-        // To convert the rack to a string we user a string builder
-        StringBuilder rackAsString;
-        rackAsString = new StringBuilder();
-
-        // If the rack is not empty
-        if (!tilesInRack.isEmpty()) {
-
-            // Add each tile to the string
-            rackAsString.append("|");
-            for (Tile tile : tilesInRack) {
-                rackAsString.append(tile.getCharacter());
-                rackAsString.append("|");
-            }
-
-        // Otherwise if the rack is empty, indicate this
-        } else {
-            rackAsString.append("Empty");
-        }
-
-        // Return the rack as a string type
-        return rackAsString.toString();
+        tiles.add(tileToAdd);
     }
 
     /**
@@ -86,6 +57,23 @@ public class Rack {
      * @return an integer representing the number of tiles missing
      */
     public int numTilesMissing() {
-        return (MAX_RACK_SIZE - tilesInRack.size());
+        return (MAX_RACK_SIZE - tiles.size());
+    }
+
+    /** Formats the tiles in the rack as an array list of characters
+     *
+     * @return the tiles formatted as an array list of characters
+     */
+    public ArrayList<Character> formatForDisplay() {
+
+        // Create a character Arraylist
+        ArrayList<Character> rackAsCharArray = new ArrayList<Character>();
+
+        // Add each tile to the string
+        for (Tile tile : tiles) {
+            rackAsCharArray.add(tile.getCharacter());
+        }
+        // Return the character ArrayList
+        return rackAsCharArray;
     }
 }

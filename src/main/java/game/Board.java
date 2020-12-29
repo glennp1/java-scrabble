@@ -1,6 +1,4 @@
-package main.java;
-
-import java.util.ArrayList;
+package main.java.game;
 
 public class Board {
 
@@ -14,11 +12,7 @@ public class Board {
     }
 
     // Methods
-    private void updateSquares() {
-        for (int i = 1; i < numRows; i++) {
-            for (int j = 1; j < numCols; j++) {
-
-            }
-        }
+    private void updateSquare(int row, int col) {
+        //squares[row][col] = Tile;
     }
 }

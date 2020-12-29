@@ -9,7 +9,7 @@
 
 ### To run in cmd
 > From the root directory navigate to: out/production/java-scrabble  
-> Run: java main.java.ScrabbleGame
+> Run: java main.java.game.ScrabbleGame
 
 Otherwise, it can just be compiled and run through an IDE such as IntelliJ.
 

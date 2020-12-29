@@ -1,6 +1,4 @@
-package main.java;
-
-import java.util.ArrayList;
+package main.java.game;
 
 public class Player {
 
