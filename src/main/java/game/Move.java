@@ -14,4 +14,9 @@ public class Move {
 
     // *** Methods ***
 
+    // todo do while loop
+    // do
+    // get input
+    // while !input.isValid()
+
 }

@@ -16,6 +16,11 @@ public class ScrabbleGame {
     private final int NUM_PLAYERS = 2;
     private final ArrayList<Player> players = new ArrayList<Player>();
 
+    // todo implement winner
+    private Player winner = null;
+
+    // todo maybe constants should be static ???
+
     // Constructor
 
     public ScrabbleGame() {
@@ -40,6 +45,10 @@ public class ScrabbleGame {
         displayFacade.renderPlayerRack(players.get(1));
 
         displayFacade.requestMoveInput();
+
+    }
+
+    private void playGame() {
 
     }
 
