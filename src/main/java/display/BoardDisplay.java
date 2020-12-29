@@ -9,41 +9,43 @@ public class BoardDisplay {
 
     // Attributes
 
+    private final String BOARD_HEADER =
+            "     ________ Board-Start ________ \n" +
+            "     a b c d e f g h i j k l m n o \n" +
+            "     _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n";
+
+    private final String BOARD_FOOTER =
+            "     _________ Board-End__________ \n";
+
+    private final int FIRST_ROW = 1;
+
     // Constructor
 
     public BoardDisplay() {
     }
 
     // Methods
-    public void render(Board board) {
+    public void render(char[][] formattedBoard) {
 
+        System.out.print(BOARD_HEADER);
 
+        // Keep track of the  row
+        int rowCounter = FIRST_ROW;
 
-        // todo develop board template
-        System.out.print(
-            "     ________ Board-Start ________ \n" +
-            "     a b c d e f g h i j k l m n o \n" +
-            "     _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n" +
-            "  1 |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|\n" +
-            "  2 |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|\n" +
-            "  3 |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|\n" +
-            "  4 |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|\n" +
-            "  5 |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|\n" +
-            "  6 |_|_|_|_|c|a|t|_|_|_|_|_|_|_|_|\n" +
-            "  7 |_|_|_|_|_|_|a|_|_|_|_|_|_|_|_|\n" +
-            "  8 |_|_|_|_|_|_|i|_|_|_|_|_|_|_|_|\n" +
-            "  9 |_|_|_|_|_|_|l|_|_|_|_|_|_|_|_|\n" +
-            " 10 |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|\n" +
-            " 11 |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|\n" +
-            " 12 |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|\n" +
-            " 13 |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|\n" +
-            " 14 |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|\n" +
-            " 15 |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|\n" +
-            "     _________ Board-End__________ \n"
-        );
+        for (char[] boardRow : formattedBoard) {
+            // Display the row number and increment it afterwards
+            System.out.printf("%3d |", rowCounter++);
+
+            // Display each character in the board row
+            for (char character : boardRow) {
+                System.out.print(character + "|");
+            }
+
+            // End the line
+            System.out.print("\n"); }
+
+        System.out.print(BOARD_FOOTER);
     }
-
-
 
     // todo introduce new move class
     public void handleNewMoveInput() {
@@ -51,11 +53,6 @@ public class BoardDisplay {
     }
 
     public void renderPlayerTurn(Player player) {
-
-
         System.out.println("It is Player 1's turn.");
-
-
-
     }
 }

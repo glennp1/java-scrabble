@@ -67,13 +67,13 @@ public class Rack {
     public ArrayList<Character> formatForDisplay() {
 
         // Create a character Arraylist
-        ArrayList<Character> rackAsCharArray = new ArrayList<Character>();
+        ArrayList<Character> rackFormatted = new ArrayList<Character>();
 
         // Add each tile to the string
         for (Tile tile : tiles) {
-            rackAsCharArray.add(tile.getCharacter());
+            rackFormatted.add(tile.getCharacter());
         }
         // Return the character ArrayList
-        return rackAsCharArray;
+        return rackFormatted;
     }
 }

@@ -38,8 +38,9 @@ public class DisplayFacade {
 
     public void renderBoard(Board board) {
 
+        char[][] formattedBoard = board.formatForDisplay();
 
-        boardDisplay.render(board);
+        boardDisplay.render(formattedBoard);
     }
 
     public void renderPlayerRack(Player player) {

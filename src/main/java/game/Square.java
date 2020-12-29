@@ -4,16 +4,35 @@ public class Square {
 
     // Attributes
     private Tile tile;
-    private final int DEFAULT_POINTS = 1;
-    private final int points = DEFAULT_POINTS;
+    private int points;
 
     // Constructor
 
-    public Square() {
+    public Square(Tile tile, int points) {
+        this.tile = tile;
+        this.points = points;
     }
+
+
 
 
     // Methods
 
+
+    public Tile getTile() {
+        return tile;
+    }
+
+    public char getTileCharacter() {
+        if (tile != null) {
+            return tile.getCharacter();
+        } else {
+            return '_';
+        }
+    }
+
+    public void setTile(Tile tile) {
+        this.tile = tile;
+    }
 
 }

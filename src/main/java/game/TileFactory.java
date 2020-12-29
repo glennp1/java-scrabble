@@ -6,8 +6,8 @@ import java.util.Random;
 /**
  * Factory helper class used to instantiate each tile.
  * Separated from the Bag class so as to increase cohesion,
- * to isolate the logic used in the creation of tiles,
- * and to ensure a single access point to tile creation.
+ * and to isolate the logic used in the creation of tiles in case this
+ * is updated
  */
 public class TileFactory {
 
