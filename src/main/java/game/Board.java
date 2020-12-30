@@ -5,8 +5,8 @@ public class Board {
     // Attributes
 
     // todo remove
-    private final int NUM_ROWS = 15;
-    private final int NUM_COLS = 15;
+    private static final int NUM_ROWS = 15;
+    private static final int NUM_COLS = 15;
 
     private Square[][] squaresGrid;
 
@@ -24,16 +24,17 @@ public class Board {
     // Methods
 
     /**
-     * Sets the tile of a specific square on the board, specified
+     * Gets a specific square on the board, specified
      * by a row and a column
      *
      * @param row
      * @param col
      * @param tile
      */
-    private void setSquare(int row, int col, Tile tile) {
-        squaresGrid[row][col].setTile(tile);
+    public Square getSquareByCoords(int row, int col) {
+        return squaresGrid[row][col];
     }
+
 
     /**
      *

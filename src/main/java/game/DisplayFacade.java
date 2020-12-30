@@ -1,8 +1,6 @@
 package main.java.game;
 
-import main.java.display.BoardDisplay;
-import main.java.display.MoveInput;
-import main.java.display.PlayerRackDisplay;
+import main.java.display.*;
 
 import java.util.ArrayList;
 
@@ -18,9 +16,12 @@ public class DisplayFacade {
     private static DisplayFacade instance = null;
 
     private final BoardDisplay boardDisplay = new BoardDisplay();
+    private final PlayerTurnDisplay playerTurnDisplay = new PlayerTurnDisplay();
     private final PlayerRackDisplay playerRackDisplay = new PlayerRackDisplay();
 
-    private final MoveInput moveInput = new MoveInput();
+    private final PlayerInput playerInput = new PlayerInput();
+
+    private final WinnerDisplay winnerDisplay = new WinnerDisplay();
 
     // *** Constructor ***
     private DisplayFacade() {
@@ -43,6 +44,12 @@ public class DisplayFacade {
         boardDisplay.render(formattedBoard);
     }
 
+    public void renderPlayerTurn(Player player) {
+        int playerNumber = player.getNumber();
+
+        playerTurnDisplay.render(playerNumber);
+    }
+
     public void renderPlayerRack(Player player) {
 
         ArrayList<Character> formattedRack = player.getRack().formatForDisplay();
@@ -52,17 +59,34 @@ public class DisplayFacade {
 
     }
 
+
+    public boolean requestPassInput() {
+        return playerInput.inputPass();
+    }
+
+    // todo split this up
     /**
      *
-     * @return a move todo
+     * @return a move
      */
-    public void requestMoveInput() {
+    public void requestMoveInput(Move move) {
 
+        char character = playerInput.inputCharacter();
+        int row = playerInput.inputRow();
+        int col = playerInput.inputCol();
+        boolean turnOver = playerInput.inputTurnOver();
 
-        System.out.println(moveInput.inputPass());
-        System.out.println(moveInput.inputCharacter());
-        System.out.println(moveInput.inputRow());
-        System.out.println(moveInput.inputCol());
-        System.out.println(moveInput.inputTurnOver());
+        move.processDisplayInput(character, row, col, turnOver);
+
+    }
+
+    public void renderWinner (Player winner) {
+        int playerNumber = winner.getNumber();
+
+        winnerDisplay.render(playerNumber);
+    }
+
+    public void renderDraw(){
+        winnerDisplay.renderDraw();
     }
 }

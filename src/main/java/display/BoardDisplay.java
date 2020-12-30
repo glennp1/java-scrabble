@@ -9,15 +9,15 @@ public class BoardDisplay {
 
     // Attributes
 
-    private final String BOARD_HEADER =
+    private static final String BOARD_HEADER =
             "     ________ Board-Start ________ \n" +
             "     a b c d e f g h i j k l m n o \n" +
             "     _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n";
 
-    private final String BOARD_FOOTER =
-            "     _________ Board-End__________ \n";
+    private static final String BOARD_FOOTER =
+            "     _________ Board-End__________ \n\n";
 
-    private final int FIRST_ROW = 1;
+    private static final int FIRST_ROW = 1;
 
     // Constructor
 
@@ -45,14 +45,5 @@ public class BoardDisplay {
             System.out.print("\n"); }
 
         System.out.print(BOARD_FOOTER);
-    }
-
-    // todo introduce new move class
-    public void handleNewMoveInput() {
-
-    }
-
-    public void renderPlayerTurn(Player player) {
-        System.out.println("It is Player 1's turn.");
     }
 }

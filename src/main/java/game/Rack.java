@@ -4,13 +4,58 @@ import java.util.ArrayList;
 
 public class Rack {
 
-    // Attributes
+    // *** Attributes ***
     private final int MAX_RACK_SIZE = 7;
 
     private final ArrayList<Tile> tiles = new ArrayList<Tile>();
 
-    // Constructor
-    public Rack() {
+    // todo rename / make clearer
+    private final Bag bag;
+
+    // *** Constructor ***
+    public Rack(Bag bag) {
+        this.bag = bag;
+
+        // Fill the rack with tiles from the bag
+        fillFromBag();
+    }
+
+    // *** Methods ***
+
+    // todo rack should store reference of bag and "draw from bag"
+    /**
+     * Fill the player's rack from the bag based on the number of tiles missing
+     */
+    public void fillFromBag() {
+        Tile tileToAdd;
+
+        // While there are missing tiles from the rack, add one from the bag
+        while (numTilesMissing() > 0) {
+
+            // Remove a tile from the bag and store it
+            tileToAdd = bag.removeTile();
+
+            // Add this tile to the player's rack
+            addTile(tileToAdd);
+        }
+    }
+
+    /**
+     * Adds the specified tile to the rack
+     *
+     * @param tileToAdd the specified tile to be added to the rack
+     */
+    public void addTile(Tile tileToAdd) {
+        tiles.add(tileToAdd);
+    }
+
+    /**
+     * Returns the number of tiles missing from the rack
+     *
+     * @return an integer representing the number of tiles missing
+     */
+    public int numTilesMissing() {
+        return (MAX_RACK_SIZE - tiles.size());
     }
 
     /**
@@ -42,23 +87,7 @@ public class Rack {
         tiles.removeAll(tilesToRemove);
     }
 
-    /**
-     * Adds the specified tile to the rack
-     *
-     * @param tileToAdd the specified tile to be added to the rack
-     */
-    public void addTile(Tile tileToAdd) {
-        tiles.add(tileToAdd);
-    }
 
-    /**
-     * Returns the number of tiles missing from the rack
-     *
-     * @return an integer representing the number of tiles missing
-     */
-    public int numTilesMissing() {
-        return (MAX_RACK_SIZE - tiles.size());
-    }
 
     /** Formats the tiles in the rack as an array list of characters
      *

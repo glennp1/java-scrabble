@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
         // Create a new scrabble game
-        ScrabbleGame scrabbleGame = new ScrabbleGame();
+        new ScrabbleGame();
     }
 
 }

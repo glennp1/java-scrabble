@@ -2,7 +2,7 @@ package main.java.display;
 
 import java.util.Scanner;
 
-public class MoveInput {
+public class PlayerInput {
 
     // *** Attributes ***
 
@@ -16,7 +16,7 @@ public class MoveInput {
 
     // *** Constructor ***
 
-    public MoveInput() {
+    public PlayerInput() {
     }
 
     // *** Methods ***
@@ -24,7 +24,7 @@ public class MoveInput {
     public boolean inputPass() {
 
         String userInput = processInput(
-                "Do you want to pass this turn (y/n): ",
+                "Do you want to pass this turn? This will end the game (y/n): ",
                 "[yn]"
         );
 

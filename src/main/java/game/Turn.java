@@ -3,17 +3,60 @@ package main.java.game;
 public class Turn {
 
     // *** Attributes ***
-    private Board boardAtStart;
+
+    private Player player;
 
     // todo potentially just store the board at start and just keep
     //  track of an arrayList of moves
+    private Board boardAtStart;
     private Board boardCurrent;
-    private Board boardNext;
+
+    private Rack rackAtStart;
+    private Rack rackCurrent;
 
     // *** Constructor ***
-    public Turn(Board boardAtStart) {
+    public Turn(Board boardAtStart, Player player) {
         this.boardAtStart = boardAtStart;
         this.boardCurrent = boardAtStart;
+        this.rackAtStart = player.getRack();
+        this.rackCurrent = player.getRack();
+        this.player = player;
+
+        DisplayFacade displayFacade = DisplayFacade.getInstance();
+
+        // Render the board
+        displayFacade.renderBoard(boardAtStart);
+
+
+        // Render the turn
+        displayFacade.renderPlayerTurn(player);
+
+        // Render the player's rack
+        displayFacade.renderPlayerRack(player);
+
+        // todo handle pass
+        boolean pass = displayFacade.requestPassInput();
+        if (pass) {
+            return;
+        }
+
+
+        Move move = new Move(boardCurrent, rackCurrent);
+
+        // todo do while
+        // Request a move
+        DisplayFacade.getInstance().requestMoveInput(move);
+        // todo move conditions need to be met
+
+
+        // todo validate turn
+
+        // Place tiles
+
+        // End Turn
+
+        // Replace placed tiles
+        rackCurrent.fillFromBag();
 
         processMoves();
     }
