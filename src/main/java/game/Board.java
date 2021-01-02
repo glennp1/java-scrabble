@@ -29,12 +29,10 @@ public class Board {
      *
      * @param row
      * @param col
-     * @param tile
      */
     public Square getSquareByCoords(int row, int col) {
         return squaresGrid[row][col];
     }
-
 
     /**
      *

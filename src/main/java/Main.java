@@ -1,4 +1,6 @@
-package main.java.game;
+package main.java;
+
+import main.java.game.ScrabbleGame;
 
 public class Main {
 

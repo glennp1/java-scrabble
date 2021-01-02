@@ -8,6 +8,8 @@ public class Tile {
     private char character;
     private int points;
 
+
+
     // Constructor
     public Tile(char character, int points) {
         this.character = character;
@@ -17,5 +19,9 @@ public class Tile {
 
     public char getCharacter() {
         return character;
+    }
+
+    public int getPoints() {
+        return points;
     }
 }

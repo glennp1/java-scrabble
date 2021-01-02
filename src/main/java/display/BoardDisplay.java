@@ -1,10 +1,5 @@
 package main.java.display;
 
-import main.java.game.Board;
-import main.java.game.Player;
-
-import java.util.Scanner;
-
 public class BoardDisplay {
 
     // Attributes

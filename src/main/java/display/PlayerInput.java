@@ -31,10 +31,10 @@ public class PlayerInput {
         return userInput.equals(YES);
     }
 
-    public char inputCharacter() {
+    public char inputChar() {
 
         String userInput = processInput(
-                "Enter the TILE you wish to place (a-z): ",
+                "Enter the TILE from your RACK that you wish to place (a-z): ",
                 "[a-z]"
         );
 
@@ -63,10 +63,10 @@ public class PlayerInput {
         return userInputChar - START_OF_ALPHABET;
     }
 
-    public boolean inputTurnOver() {
+    public boolean inputTurnFinished() {
 
         String userInput = processInput(
-                "Do you want to end your turn (y/n): ",
+                "Have you finished your turn (y/n): ",
                 "[yn]"
         );
 

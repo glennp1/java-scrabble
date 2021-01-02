@@ -1,4 +1,7 @@
-package main.java.game;
+package main.java.game.player;
+
+import main.java.game.Bag;
+import main.java.game.Tile;
 
 import java.util.ArrayList;
 

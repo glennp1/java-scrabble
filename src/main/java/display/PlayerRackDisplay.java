@@ -1,7 +1,5 @@
 package main.java.display;
 
-import main.java.game.Player;
-
 import java.util.ArrayList;
 
 public class PlayerRackDisplay {

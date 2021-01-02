@@ -11,7 +11,7 @@ public class SquareFactory {
 
     // *** Attributes ***
     private final Tile DEFAULT_TILE = null;
-    private final int DEFAULT_POINTS = 1;
+    private final int DEFAULT_SQUARE_POINTS = 1;
 
 
     // *** Constructor ***
@@ -24,7 +24,7 @@ public class SquareFactory {
 
         for (int i = 0; i < numRows; i++) {
             for (int j = 0; j < numCols; j++) {
-                squaresGrid[i][j] = new Square(DEFAULT_TILE, DEFAULT_POINTS);
+                squaresGrid[i][j] = new Square(DEFAULT_TILE, DEFAULT_SQUARE_POINTS, i, j);
             }
         }
 

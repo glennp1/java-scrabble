@@ -1,5 +1,8 @@
 package main.java.game;
 
+import main.java.game.player.HumanPlayer;
+import main.java.game.player.Player;
+
 import java.util.ArrayList;
 
 public class ScrabbleGame {
@@ -20,6 +23,9 @@ public class ScrabbleGame {
     private boolean finalRound = false; // Stores if it is the final round of the game
     private Player finalRoundPlayer = null; // The player that caused the final round
 
+    private Player winner = null;
+    private boolean draw = false;
+
     // todo maybe constants should be static ??? yes
 
     // *** Constructor ***
@@ -30,6 +36,10 @@ public class ScrabbleGame {
 
         playGame();
 
+        // Decide the winner of the game and show the result
+        decideGameOutcome();
+        showGameOutcome();
+
     }
     // Methods
 
@@ -37,13 +47,16 @@ public class ScrabbleGame {
 
         // Add each player to the game
         for (int i = 1; i <= NUM_PLAYERS; i++) {
-            players.add(new Player(this, i));
+            players.add(new HumanPlayer(this, i));
         }
 
         // Set the current player
         currentPlayer = players.get(FIRST_PLAYER_INDEX);
     }
 
+    /**
+     *
+     */
     private void playGame() {
 
         // While the game is not over
@@ -55,12 +68,11 @@ public class ScrabbleGame {
             // Update the current player
             updateCurrentPlayer();
         }
-
-        // Decide the winner of the game and display the result
-        decideWinner();
-
     }
 
+    /**
+     *
+     */
     private void updateCurrentPlayer() {
 
         // Get the index of the current active player
@@ -79,32 +91,66 @@ public class ScrabbleGame {
         currentPlayer = players.get(currentPlayerIndex);
     }
 
+    /**
+     *
+     */
+    public void triggerFinalRound(Player finalRoundPlayer) {
+
+        // If it is not already the final round
+        if (!finalRound) {
+            // Record that it is the final round
+            finalRound = true;
+            // Record the player that triggered the final round, when it arrives at
+            // their next turn the game will end
+            this.finalRoundPlayer = finalRoundPlayer;
+        }
+    }
+
+    /**
+     *
+     * @return
+     */
     private boolean gameOver(){
         return (finalRound && currentPlayer == finalRoundPlayer);
     }
 
-    private void decideWinner() {
-        Player winner = null;
+    /**
+     *
+     */
+    private void decideGameOutcome() {
         int highestScore = -1;
-        boolean draw = false;
 
         // Find the highers scoring player or players
         for (Player player : players) {
             int score = player.getScore();
             if (score > highestScore) {
                 winner = player;
+                highestScore = score;
                 draw = false;
             }
             else if (score == highestScore) {
                 draw = true;
             }
         }
+    }
 
+    private void showGameOutcome() {
         // Display the outcome of the game
         DisplayFacade displayFacade = DisplayFacade.getInstance();
+
+        // The board
+        displayFacade.renderBoard(board);
+
+        // Each player's score
+        for (Player player : players) {
+            displayFacade.renderPlayerScore(player);
+        }
+
+        // If it is a draw, render a draw
         if (draw) {
             displayFacade.renderDraw();
         }
+        // Otherwise render the winner
         else {
             displayFacade.renderWinner(winner);
         }

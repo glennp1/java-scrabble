@@ -1,6 +1,7 @@
 package main.java.game;
 
 import main.java.display.*;
+import main.java.game.player.Player;
 
 import java.util.ArrayList;
 
@@ -17,11 +18,14 @@ public class DisplayFacade {
 
     private final BoardDisplay boardDisplay = new BoardDisplay();
     private final PlayerTurnDisplay playerTurnDisplay = new PlayerTurnDisplay();
+    private final PlayerScoreDisplay playerScoreDisplay = new PlayerScoreDisplay();
     private final PlayerRackDisplay playerRackDisplay = new PlayerRackDisplay();
 
     private final PlayerInput playerInput = new PlayerInput();
 
     private final WinnerDisplay winnerDisplay = new WinnerDisplay();
+
+    private final ErrorDisplay errorDisplay = new ErrorDisplay();
 
     // *** Constructor ***
     private DisplayFacade() {
@@ -50,6 +54,13 @@ public class DisplayFacade {
         playerTurnDisplay.render(playerNumber);
     }
 
+    public void renderPlayerScore(Player player) {
+        int playerNumber = player.getNumber();
+        int playerScore = player.getScore();
+
+        playerScoreDisplay.render(playerNumber, playerScore);
+    }
+
     public void renderPlayerRack(Player player) {
 
         ArrayList<Character> formattedRack = player.getRack().formatForDisplay();
@@ -57,6 +68,12 @@ public class DisplayFacade {
 
         playerRackDisplay.render(playerNumber, formattedRack);
 
+    }
+
+    public void renderPlayerEndTurn(Player player) {
+        int playerNumber = player.getNumber();
+
+        playerTurnDisplay.renderEnd(playerNumber);
     }
 
 
@@ -67,17 +84,22 @@ public class DisplayFacade {
     // todo split this up
     /**
      *
-     * @return a move
+     * @return if the turn is over
      */
-    public void requestMoveInput(Move move) {
+    public char requestCharInput() {
+        return playerInput.inputChar();
+    }
 
-        char character = playerInput.inputCharacter();
-        int row = playerInput.inputRow();
-        int col = playerInput.inputCol();
-        boolean turnOver = playerInput.inputTurnOver();
+    public int requestRowInput() {
+        return playerInput.inputRow();
+    }
 
-        move.processDisplayInput(character, row, col, turnOver);
+    public int requestColInput() {
+        return playerInput.inputCol();
+    }
 
+    public boolean requestTurnFinished() {
+        return playerInput.inputTurnFinished();
     }
 
     public void renderWinner (Player winner) {
@@ -88,5 +110,9 @@ public class DisplayFacade {
 
     public void renderDraw(){
         winnerDisplay.renderDraw();
+    }
+
+    public void renderError(String error) {
+        errorDisplay.render(error);
     }
 }

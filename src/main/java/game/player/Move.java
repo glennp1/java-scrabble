@@ -1,4 +1,6 @@
-package main.java.game;
+package main.java.game.player;
+
+import main.java.game.*;
 
 public class Move {
 
@@ -23,14 +25,21 @@ public class Move {
     // get input
     // while !input.isValid()
 
-    public void processDisplayInput(char character, int row, int col, boolean turnOver) {
+    /**
+     *
+     *
+     * @param character
+     * @param row
+     * @param col
+     * @return true if successful
+     */
 
-        // todo add more sophisticated validation
+    public void execute() {
+        squareSelected.setTile(tileSelected);
+    }
 
-        squareSelected = boardCurrent.getSquareByCoords(row, col);
-        tileSelected = rackCurrent.getTileByChar(character);
-
-
+    public int getPoints() {
+        return squareSelected.getPoints() * tileSelected.getPoints();
     }
 
     public void setSquareSelected(Square squareSelected) {
@@ -39,5 +48,9 @@ public class Move {
 
     public void setTileSelected(Tile tileSelected) {
         this.tileSelected = tileSelected;
+    }
+
+    public Square getSquareSelected() {
+        return squareSelected;
     }
 }
