@@ -19,7 +19,7 @@ public abstract class Player {
     // todo tiles placed
 
     // A set of moves confirmed by the player
-    protected LinkedList<Move> movesConfirmed = new LinkedList<Move>();
+    protected LinkedList<Move> movesConfirmed = new LinkedList<>();
 
     // The words formed by the player
     // protected LinkedList<LinkedList<Square>> wordsFormed =
@@ -43,52 +43,8 @@ public abstract class Player {
      * @return
      */
     public void takeTurn() {
-
-        // Access the instance of the display
-        DisplayFacade displayFacade = DisplayFacade.getInstance();
-
-        // Render the turn
-        displayFacade.renderPlayerTurn(this);
-
-        // Render the board
-        displayFacade.renderBoard(scrabbleGame.getBoard());
-
-        // Render the player's rack
-        displayFacade.renderPlayerRack(this);
-        // Render the player's score
-        displayFacade.renderPlayerScore(this);
-
-        // Confirm moves for the turn
-        confirmMoves();
-
-        // Execute the selected moves
-        executeMoves();
-
-        // Replace placed tiles from the bag
-        rack.fill(scrabbleGame.getBag());
-
-        // End Turn
-        displayFacade.renderPlayerEndTurn(this);
-
-        // todo player should handle the input
-        //  turn and move object just used to store
-
-        // new Turn(scrabbleGame.getBoard(),this);
-    }
-
-    protected abstract void confirmMoves();
-
-    private void executeMoves() {
-
-        if (movesConfirmed == null) {
-            return;
-        }
-
-        for (Move move : movesConfirmed) {
-            move.execute();
-            score += move.getPoints();
-        }
-
+        // todo separate human and npc turn
+        new Turn(scrabbleGame.getBoard(),this);
     }
 
     public int getNumber() {
@@ -101,5 +57,9 @@ public abstract class Player {
 
     public int getScore() {
         return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }
