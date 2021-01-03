@@ -32,6 +32,8 @@ public class ScrabbleGame {
 
     public ScrabbleGame() {
 
+        initialiseDictionary();
+
         initialisePlayers();
 
         playGame();
@@ -41,7 +43,13 @@ public class ScrabbleGame {
         showGameOutcome();
 
     }
-    // Methods
+    // *** Methods ***
+
+    private void initialiseDictionary() {
+        EnglishDictionaryReader instance = EnglishDictionaryReader.getInstance();
+
+        System.out.println(instance.checkForWord("how"));
+    }
 
     private void initialisePlayers() {
 
