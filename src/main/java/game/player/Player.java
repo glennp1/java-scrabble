@@ -69,6 +69,9 @@ public abstract class Player {
         // For each word in the words formed on the player's current turn
         for (Word word : turnCurrent.getWordsFormed()) {
 
+            // todo move
+            System.out.println("Formed " + word.toString() + " for " + word.getPoints() + " points.");
+
             // Update the player's score based on the word's points
             score += word.getPoints();
         }

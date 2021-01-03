@@ -68,12 +68,12 @@ public class EnglishDictionary {
     }
 
     /**
-     * Searches for a specific word within the english dictionary
+     * Checks if a word is a valid word in the english dictionary
      *
      * @param word the word to be searched for
-     * @return true if word exists, false otherwise
+     * @return true if word is valid, false otherwise
      */
-    public boolean checkForWord(String word) {
+    public boolean checkIfValid(String word) {
         // Search for the index of the word within english words
         int indexOfWord = Collections.binarySearch(englishWords, word);
 

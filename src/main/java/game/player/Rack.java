@@ -10,7 +10,7 @@ public class Rack {
     // *** Attributes ***
     private final int MAX_RACK_SIZE = 7;
 
-    private ArrayList<Tile> tiles = new ArrayList<Tile>();
+    private ArrayList<Tile> tiles = new ArrayList<>();
 
     // todo rename / make clearer
 
@@ -20,7 +20,6 @@ public class Rack {
 
     // *** Methods ***
 
-    // todo rack should store reference of bag and "draw from bag"
     /**
      * Fill the player's rack from the bag based on the number of tiles missing
      */

@@ -5,17 +5,16 @@ public class Board {
     // Attributes
 
     // todo remove
-    private static final int NUM_ROWS = 15;
-    private static final int NUM_COLS = 15;
+    public static final int NUM_ROWS = 15;
+    public static final int NUM_COLS = 15;
 
     private Square[][] squaresGrid;
 
-    private final SquareFactory squareFactory = new SquareFactory();
+    private final SquareFactory squareFactory = new SquareFactory(this);
 
     // Constructor
     public Board() {
-
-        squaresGrid = squareFactory.getNewSquaresGrid(NUM_ROWS, NUM_COLS);
+        squaresGrid = squareFactory.getNewSquaresGrid();
     }
 
     // Methods

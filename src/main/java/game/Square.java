@@ -12,14 +12,15 @@ public class Square {
     private int points;
     private int row;
     private int col;
-
+    private Board board;
     // Constructor
 
-    public Square(Tile tile, int points, int row, int col) {
+    public Square(Tile tile, int points, int row, int col, Board board) {
         this.tile = tile;
         this.points = points;
         this.row = row;
         this.col = col;
+        this.board = board;
     }
 
     // Methods
@@ -65,6 +66,78 @@ public class Square {
 
         // Return if either true
         return (sameRow || sameCol);
+    }
+
+    public boolean hasTileLeft() {
+        // Set the column to the left
+        int colLeft = col - 1;
+        // If the column to the left is outside the bounds return false
+        if (colLeft < 0) {
+            return false;
+        }
+        // Otherwise return if the square to the left is empty
+        else {
+            return !board.getSquareByCoords(row, colLeft).isEmpty();
+        }
+    }
+
+    public boolean hasTileRight() {
+        // Set the column to the right
+        int colRight = col + 1;
+        // If the column to the right is outside the bounds return false
+        if (colRight >= Board.NUM_COLS) {
+            return false;
+        }
+        // Otherwise return if the square to the right is empty
+        else {
+            return !board.getSquareByCoords(row, colRight).isEmpty();
+        }
+    }
+
+    public boolean hasTileBelow() {
+        // Set the row below
+        int rowBelow = row - 1;
+        // If the row below is outside the bounds return false
+        if (rowBelow < 0) {
+            return false;
+        }
+        // Otherwise return if the square below is empty
+        else {
+            return !board.getSquareByCoords(rowBelow, col).isEmpty();
+        }
+    }
+
+    public boolean hasTileAbove() {
+        // Set the row above
+        int rowAbove = row + 1;
+        // If the row above is outside the bounds return false
+        if (rowAbove >= Board.NUM_ROWS) {
+            return false;
+        }
+        // Otherwise return if the square above is empty
+        else {
+            return !board.getSquareByCoords(rowAbove, col).isEmpty();
+        }
+    }
+
+    public Square getSquareLeft() {
+        int colLeft = col - 1;
+        return board.getSquareByCoords(row, colLeft);
+    }
+
+    public Square getSquareRight() {
+        int colRight = col + 1;
+        return board.getSquareByCoords(row, colRight);
+    }
+
+    public Square getSquareBelow() {
+        int rowBelow = row - 1;
+        return board.getSquareByCoords(rowBelow, col);
+    }
+
+    public Square getSquareAbove() {
+        int rowAbove = row + 1;
+        return board.getSquareByCoords(rowAbove, col);
     }
 
     public void setTile(Tile tile) {

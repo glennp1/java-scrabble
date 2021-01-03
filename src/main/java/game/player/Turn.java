@@ -8,9 +8,6 @@ public class Turn {
 
     // *** Attributes ***
 
-    // todo remove
-    private int count = 0;
-
     private Player player;
     private Board boardCurrent;
     private Rack rackCurrent;
@@ -121,53 +118,41 @@ public class Turn {
         movesCompleted = new LinkedList<>();
     }
 
-    /**
-     * Returns
-     *
-     * @param movesPotential
-     * @return
-     */
+
     private boolean movesAreValid() {
-        // Check for words across or down for each move
-        Word wordAcross;
-        Word wordDown;
 
+        DisplayFacade display = DisplayFacade.getInstance();
+        EnglishDictionary englishDictionary = EnglishDictionary.getInstance();
+        LinkedList<Word> potentialWords = findPotentialWords();
 
-        // todo test what happens when not valid
-        count++;
-        return count >= 2;
+        for (Word word : potentialWords) {
 
-//        // for each move in moves
-//        for (Move move : movesCompleted) {
-//
-//            wordAcross = null;
-//            wordDown = null;
-//            EnglishDictionary englishDictionary = EnglishDictionary.getInstance();
-//
-//            if (move.formsRow()) {
-//
-//                wordAcross = move.findWordAcross();
-//
-//                if (englishDictionary.checkForWord(wordAcross)) {
-//
-//                }
-//
-//
-//            }
-//
-//
-//            if (move.formsColumn()) {
-//
-//
-//                wordDown = move.findWordDown();
-//
-//            }
-//
-//
-//
-//
-//        }
+            // If the word is NOT a valid english word
+            if (!englishDictionary.checkIfValid(word.toString())) {
+                // The move is not valid
+                display.renderError(
+                        "Set of moves selected form an invalid word. Please try again.");
+                return false;
+            }
 
+            // If the word (of the same orientation) is not in words formed
+            if (!word.existsIn(wordsFormed)) {
+                // Add the word to words formed
+                wordsFormed.add(word);
+            }
+        }
+
+        // If more than one word has been formed then the move is valid
+        if (wordsFormed.size() >= 1) {
+            return true;
+        }
+        // Otherwise the move is not valid
+        else {
+            display.renderError(
+                    "Set of moves selected do not form a word. Please try again.");
+            return false;
+        }
+    }
         // check for connecting rows
 
         // check for connecting columns
@@ -185,10 +170,34 @@ public class Turn {
         // iterate to next
 
 
+    public LinkedList<Word> findPotentialWords() {
+        // New linked list of potential words
+        LinkedList<Word> potentialWords = new LinkedList<>();
+
+        // for each move in moves
+        for (Move move : movesCompleted) {
+
+            // Set the starting square
+            Square startingSquare = move.getSquareSelected();
+
+            // If the move forms a row
+            if (move.formsRow()) {
+                // Add the new horizontal word to the potential words
+                potentialWords.add(new Word(true, startingSquare));
+            }
+
+            // If the move forms a column
+            if (move.formsColumn()) {
+                // Add the new vertical word to the potential words
+                potentialWords.add(new Word(false, startingSquare));
+            }
+        }
+
+        return potentialWords;
+    }
 
 
         // todo update the words formed in the process
-    }
 
     public Board getBoardCurrent() {
         return boardCurrent;

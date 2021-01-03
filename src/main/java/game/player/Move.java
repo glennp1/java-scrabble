@@ -95,6 +95,15 @@ public class Move {
         squareSelected.setTile(tileSelected);
     }
 
+    public boolean formsRow() {
+        return squareSelected.hasTileLeft() || squareSelected.hasTileRight();
+    }
+
+    public boolean formsColumn() {
+        return squareSelected.hasTileAbove() || squareSelected.hasTileBelow();
+    }
+
+
     public Square getSquareSelected() {
         return squareSelected;
     }
