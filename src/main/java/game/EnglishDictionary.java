@@ -4,17 +4,17 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class EnglishDictionaryReader {
+public class EnglishDictionary {
 
     // *** Attributes ***
     private static final String PATH_NAME = "src/main/resources/wordsAlpha.txt";
 
-    private static EnglishDictionaryReader instance = null;
+    private static EnglishDictionary instance = null;
 
     private ArrayList<String> englishWords;
 
     // *** Constructor ***
-    private EnglishDictionaryReader() {
+    private EnglishDictionary() {
 
         readInDictionary();
 
@@ -22,9 +22,9 @@ public class EnglishDictionaryReader {
 
     // *** Methods ***
 
-    public static EnglishDictionaryReader getInstance() {
+    public static EnglishDictionary getInstance() {
         if (instance == null) {
-            instance = new EnglishDictionaryReader();
+            instance = new EnglishDictionary();
         }
         return instance;
     }
@@ -62,6 +62,9 @@ public class EnglishDictionaryReader {
         catch (Exception e) {
             e.printStackTrace();
         }
+
+        // Ensure the englishWords are sorted in ascending order
+        Collections.sort(englishWords);
     }
 
     /**

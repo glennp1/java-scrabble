@@ -45,10 +45,12 @@ public class ScrabbleGame {
     }
     // *** Methods ***
 
+    /**
+     * Initialises an instance of the dictionary at the start of the game
+     * This ensures it does not have to load later
+     */
     private void initialiseDictionary() {
-        EnglishDictionaryReader instance = EnglishDictionaryReader.getInstance();
-
-        System.out.println(instance.checkForWord("how"));
+        EnglishDictionary.getInstance();
     }
 
     private void initialisePlayers() {
