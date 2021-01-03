@@ -2,8 +2,6 @@ package main.java.game.player;
 
 import main.java.game.*;
 
-import java.util.LinkedList;
-
 public abstract class Player {
 
     // Attributes
@@ -18,11 +16,7 @@ public abstract class Player {
     protected final Rack rack;
     // todo tiles placed
 
-    // A set of moves confirmed by the player
-    protected LinkedList<Move> movesConfirmed = new LinkedList<>();
-
-    // The words formed by the player
-    // protected LinkedList<LinkedList<Square>> wordsFormed =
+    protected Turn turnCurrent;
 
     // Constructor
 
@@ -44,7 +38,14 @@ public abstract class Player {
      */
     public void takeTurn() {
         // todo separate human and npc turn
-        new Turn(scrabbleGame.getBoard(),this);
+        // Start a new turn for the player
+        turnCurrent = new Turn(scrabbleGame.getBoard(),this);
+
+        // Update the score accordingly
+        updateScore();
+
+        // Replace placed tiles from the bag
+        rack.fill(scrabbleGame.getBag());
     }
 
     public int getNumber() {
@@ -59,7 +60,17 @@ public abstract class Player {
         return score;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+
+    /**
+     * Updates the score of the player at the end of their turn
+     * Calculated by adding the points of each word formed
+     */
+    private void updateScore() {
+        // For each word in the words formed on the player's current turn
+        for (Word word : turnCurrent.getWordsFormed()) {
+
+            // Update the player's score based on the word's points
+            score += word.getPoints();
+        }
     }
 }

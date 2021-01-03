@@ -27,8 +27,8 @@ public class Rack {
     public void fill(Bag bag) {
         Tile tileToAdd;
 
-        // While there are missing tiles from the rack, add one from the bag
-        while (numTilesMissing() > 0) {
+        // While there are missing tiles from the rack, and the bag is not empty
+        while (numTilesMissing() > 0 && bag.isNotEmpty()) {
 
             // Remove a tile from the bag and store it
             tileToAdd = bag.removeTile();
@@ -94,7 +94,7 @@ public class Rack {
     public ArrayList<Character> formatForDisplay() {
 
         // Create a character Arraylist
-        ArrayList<Character> rackFormatted = new ArrayList<Character>();
+        ArrayList<Character> rackFormatted = new ArrayList<>();
 
         // Add each tile to the string
         for (Tile tile : tiles) {
@@ -106,17 +106,17 @@ public class Rack {
 
     public Rack createBackup() {
         Rack rackBackup = new Rack();
-        rackBackup.setAllTiles(this.tiles);
+
+        // Add all the tiles to rack backup individually,
+        // rather than copying the list itself
+        rackBackup.tiles.addAll(this.tiles);
 
         return rackBackup;
     }
 
     public void restoreBackup(Rack rackBackup) {
-        setAllTiles(rackBackup.tiles);
-    }
-
-    public void setAllTiles(ArrayList<Tile> tiles) {
-        this.tiles = tiles;
+        this.tiles.clear();
+        this.tiles.addAll(rackBackup.tiles);
     }
 
 

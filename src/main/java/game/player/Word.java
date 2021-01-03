@@ -36,4 +36,23 @@ public class Word {
         return totalPoints;
     }
 
+
+    /**
+     * Converts an instance of the word class to a string
+     *
+     * @return a string representation of the word
+     */
+    public String toString() {
+        // Use a string builder to construct the string
+        StringBuilder wordAsString = new StringBuilder();
+
+        // For each square in the word
+        for (Square square : squaresInWord) {
+            // Add the character within the tile on the square to the string
+            wordAsString.append(square.getTile().getCharacter());
+        }
+
+        return wordAsString.toString();
+    }
+
 }

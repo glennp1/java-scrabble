@@ -11,7 +11,7 @@ public  class PlayerTurnDisplay {
     }
 
     // *** Methods ***
-    public void render(int playerNumber) {
+    public void renderStart(int playerNumber) {
         System.out.printf("It is Player %d's turn.\n\n", playerNumber);
     }
 

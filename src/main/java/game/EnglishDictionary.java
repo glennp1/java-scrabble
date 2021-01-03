@@ -80,13 +80,6 @@ public class EnglishDictionary {
         // If the index is positive then the word exists, otherwise it does not
         return indexOfWord >= 0;
     }
-
-    // todo read in dictionary from file
-
-    // todo format dictionary
-
-    // todo checkForWord method
-
-    // todo maybe make separate dictionary class
-
 }
+
+// todo could make a separate dictionary class

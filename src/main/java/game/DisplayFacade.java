@@ -40,6 +40,12 @@ public class DisplayFacade {
         return instance;
     }
 
+    public void renderBoardAndPlayer(Board board, Player player) {
+        renderBoard(board);
+        renderPlayerRack(player);
+        renderPlayerScore(player);
+    }
+
 
     public void renderBoard(Board board) {
 
@@ -48,10 +54,10 @@ public class DisplayFacade {
         boardDisplay.render(formattedBoard);
     }
 
-    public void renderPlayerTurn(Player player) {
+    public void renderPlayerStartTurn(Player player) {
         int playerNumber = player.getNumber();
 
-        playerTurnDisplay.render(playerNumber);
+        playerTurnDisplay.renderStart(playerNumber);
     }
 
     public void renderPlayerScore(Player player) {
