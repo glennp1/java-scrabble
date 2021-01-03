@@ -121,11 +121,16 @@ public class Turn {
 
     private boolean movesAreValid() {
 
+        // todo verify that all moves are connected to one another (no floating tiles)
+
         DisplayFacade display = DisplayFacade.getInstance();
         EnglishDictionary englishDictionary = EnglishDictionary.getInstance();
         LinkedList<Word> potentialWords = findPotentialWords();
 
         for (Word word : potentialWords) {
+
+            // todo remove
+            System.out.println(word.toString());
 
             // If the word is NOT a valid english word
             if (!englishDictionary.checkIfValid(word.toString())) {

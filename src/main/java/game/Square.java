@@ -94,9 +94,22 @@ public class Square {
         }
     }
 
+    public boolean hasTileAbove() {
+        // Set the row above
+        int rowAbove = row - 1;
+        // If the row above is outside the bounds return false
+        if (rowAbove >= Board.NUM_ROWS) {
+            return false;
+        }
+        // Otherwise return if the square above is empty
+        else {
+            return !board.getSquareByCoords(rowAbove, col).isEmpty();
+        }
+    }
+
     public boolean hasTileBelow() {
         // Set the row below
-        int rowBelow = row - 1;
+        int rowBelow = row + 1;
         // If the row below is outside the bounds return false
         if (rowBelow < 0) {
             return false;
@@ -107,18 +120,7 @@ public class Square {
         }
     }
 
-    public boolean hasTileAbove() {
-        // Set the row above
-        int rowAbove = row + 1;
-        // If the row above is outside the bounds return false
-        if (rowAbove >= Board.NUM_ROWS) {
-            return false;
-        }
-        // Otherwise return if the square above is empty
-        else {
-            return !board.getSquareByCoords(rowAbove, col).isEmpty();
-        }
-    }
+
 
     public Square getSquareLeft() {
         int colLeft = col - 1;
@@ -130,15 +132,17 @@ public class Square {
         return board.getSquareByCoords(row, colRight);
     }
 
+    public Square getSquareAbove() {
+        int rowAbove = row - 1;
+        return board.getSquareByCoords(rowAbove, col);
+    }
+
     public Square getSquareBelow() {
-        int rowBelow = row - 1;
+        int rowBelow = row + 1;
         return board.getSquareByCoords(rowBelow, col);
     }
 
-    public Square getSquareAbove() {
-        int rowAbove = row + 1;
-        return board.getSquareByCoords(rowAbove, col);
-    }
+
 
     public void setTile(Tile tile) {
         this.tile = tile;
