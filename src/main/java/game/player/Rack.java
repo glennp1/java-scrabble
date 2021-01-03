@@ -10,17 +10,12 @@ public class Rack {
     // *** Attributes ***
     private final int MAX_RACK_SIZE = 7;
 
-    private final ArrayList<Tile> tiles = new ArrayList<Tile>();
+    private ArrayList<Tile> tiles = new ArrayList<Tile>();
 
     // todo rename / make clearer
-    private final Bag bag;
 
     // *** Constructor ***
-    public Rack(Bag bag) {
-        this.bag = bag;
-
-        // Fill the rack with tiles from the bag
-        fillFromBag();
+    public Rack() {
     }
 
     // *** Methods ***
@@ -29,7 +24,7 @@ public class Rack {
     /**
      * Fill the player's rack from the bag based on the number of tiles missing
      */
-    public void fillFromBag() {
+    public void fill(Bag bag) {
         Tile tileToAdd;
 
         // While there are missing tiles from the rack, add one from the bag
@@ -82,12 +77,12 @@ public class Rack {
     }
 
     /**
-     * Removes the specified array list of tiles from the rack
+     * Removes the specified tile from the rack
      *
-     * @param tilesToRemove the tiles indicated for removal
+     * @param tileToRemove the tiles indicated for removal
      */
-    public void removeManyTiles(ArrayList<Tile> tilesToRemove){
-        tiles.removeAll(tilesToRemove);
+    public void removeTile(Tile tileToRemove){
+        tiles.remove(tileToRemove);
     }
 
 
@@ -108,4 +103,23 @@ public class Rack {
         // Return the character ArrayList
         return rackFormatted;
     }
+
+    public Rack createBackup() {
+        Rack rackBackup = new Rack();
+        rackBackup.setAllTiles(this.tiles);
+
+        return rackBackup;
+    }
+
+    public void restoreBackup(Rack rackBackup) {
+        setAllTiles(rackBackup.tiles);
+    }
+
+    public void setAllTiles(ArrayList<Tile> tiles) {
+        this.tiles = tiles;
+    }
+
+
+
+
 }

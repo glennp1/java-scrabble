@@ -16,9 +16,6 @@ public class Board {
     public Board() {
 
         squaresGrid = squareFactory.getNewSquaresGrid(NUM_ROWS, NUM_COLS);
-
-        System.out.println(squaresGrid[0][0]);
-
     }
 
     // Methods
@@ -48,5 +45,37 @@ public class Board {
         }
 
         return boardFormatted;
+    }
+
+    public Board createBackup() {
+        Board boardBackup = new Board();
+        Tile tileCurrent;
+
+        // For each row and column
+        for (int i = 0; i < NUM_ROWS; i++) {
+            for (int j = 0; j < NUM_COLS; j++) {
+
+                // Store the tile that is currently in each square
+                tileCurrent = this.squaresGrid[i][j].getTile();
+                boardBackup.squaresGrid[i][j].setTile(tileCurrent);
+            }
+        }
+
+        return boardBackup;
+    }
+
+    public void restoreBackup(Board boardBackup) {
+
+        Tile tileBackup;
+
+        // For each row and column
+        for (int i = 0; i < NUM_ROWS; i++) {
+            for (int j = 0; j < NUM_COLS; j++) {
+
+                // Set the tile in each square to the one in the backup
+                tileBackup = boardBackup.squaresGrid[i][j].getTile();
+                this.squaresGrid[i][j].setTile(tileBackup);
+            }
+        }
     }
 }

@@ -35,6 +35,10 @@ public class Move {
      */
 
     public void execute() {
+        // Remove the tile from the rack
+        rackCurrent.removeTile(tileSelected);
+
+        // Place it on the square
         squareSelected.setTile(tileSelected);
     }
 

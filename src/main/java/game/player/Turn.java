@@ -16,12 +16,16 @@ public class Turn {
     // series of moves
     // squares involved
 
+    Board boardAtStart = new Board();
+    Rack rackAtStart = new Rack();
+
+    boolean passed = false;
+
+
     // *** Constructor ***
     public Turn(Board boardAtStart, Player player) {
 //        this.boardAtStart = boardAtStart;
-//        this.boardCurrent = boardAtStart;
 //        this.rackAtStart = player.getRack();
-//        this.rackCurrent = player.getRack();
         this.player = player;
 
         processAllMoves();

@@ -7,6 +7,7 @@ import java.util.LinkedList;
 public class HumanPlayer extends Player {
 
     // Attributes
+    Board boardAtStart = new Board();
 
     // Constructor
     public HumanPlayer(ScrabbleGame scrabbleGame, int number) {
@@ -18,20 +19,25 @@ public class HumanPlayer extends Player {
     protected void confirmMoves() {
 
         // todo maybe invalid/potential moves should be stored separately
+        LinkedList<Move> movesPotential = new LinkedList<Move>();
 
         do {
             // The player continues to select their moves
-            selectAllMoves();
+            movesPotential = selectAllMoves();
         }
         // Continue until the selected moves are valid
-        while (!movesAreValid(movesSelected));
+        while (!movesAreValid(movesPotential));
+
+        // Confirm the potential moves
+        movesConfirmed = movesPotential;
+
     }
 
     // selectAllMoves
-    private void selectAllMoves() {
-        // todo maybe invalid/potential moves should be stored separately
-        // Wipe the contents of selected moves
-        movesSelected = new LinkedList<Move>();
+    private LinkedList<Move> selectAllMoves() {
+
+        // Create a new set of potential moves
+        LinkedList<Move> allMoves = new LinkedList<Move>();
 
         // Access the instance of the display
         DisplayFacade displayFacade = DisplayFacade.getInstance();
@@ -41,25 +47,29 @@ public class HumanPlayer extends Player {
             // Trigger the final round
             scrabbleGame.triggerFinalRound(this);
             // End the turn
-            return;
+            return null;
         }
 
         do {
             // Have the player input a new move
-            selectOneMove();
+            allMoves.add(selectOneMove());
         }
         // Continue until the player has finished their turn
         while (!displayFacade.requestTurnFinished());
+
+        return allMoves;
+
     }
 
-    private void selectOneMove() {
+    private Move selectOneMove() {
         DisplayFacade displayFacade = DisplayFacade.getInstance();
-
-        Move move = new Move(scrabbleGame.getBoard(), this.rack);
-
+        Move oneMove = new Move(scrabbleGame.getBoard(), this.rack);
         Tile tileSelected;
         Square squareSelected;
 
+        // Display the current board and rack
+        displayFacade.renderBoard(scrabbleGame.getBoard());
+        displayFacade.renderPlayerRack(this);
 
         // Need to check if char selected matches one from the rack (that hasn't already been played
         do {
@@ -82,15 +92,11 @@ public class HumanPlayer extends Player {
         // Continue until the square selected is valid
         while (!squareIsValid(squareSelected));
 
-
-
-
         // Once a valid square and tile have been selected we can add them to the move
-        move.setTileSelected(tileSelected);
-        move.setSquareSelected(squareSelected);
+        oneMove.setTileSelected(tileSelected);
+        oneMove.setSquareSelected(squareSelected);
 
-
-        movesSelected.add(move);
+        return oneMove;
     }
 
 
@@ -112,7 +118,7 @@ public class HumanPlayer extends Player {
             return false;
         }
 
-        if (!squareSelected.isInLine(movesSelected)) {
+        if (!squareSelected.isInLine(movesConfirmed)) {
             displayFacade.renderError("Square selected is not in line.");
             return false;
         }

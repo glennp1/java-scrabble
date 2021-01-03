@@ -18,8 +18,8 @@ public abstract class Player {
     protected final Rack rack;
     // todo tiles placed
 
-    // A set of moves selected by the player
-    protected LinkedList<Move> movesSelected = new LinkedList<Move>();
+    // A set of moves confirmed by the player
+    protected LinkedList<Move> movesConfirmed = new LinkedList<Move>();
 
     // The words formed by the player
     // protected LinkedList<LinkedList<Square>> wordsFormed =
@@ -30,7 +30,10 @@ public abstract class Player {
     public Player(ScrabbleGame scrabbleGame, int number) {
         this.scrabbleGame = scrabbleGame;
         this.number = number;
-        this.rack = new Rack(scrabbleGame.getBag());
+        this.rack = new Rack();
+
+        // fill the rack
+        this.rack.fill(scrabbleGame.getBag());
     }
 
     // Methods
@@ -55,14 +58,14 @@ public abstract class Player {
         // Render the player's score
         displayFacade.renderPlayerScore(this);
 
-        // Select moves for the turn
+        // Confirm moves for the turn
         confirmMoves();
 
         // Execute the selected moves
         executeMoves();
 
         // Replace placed tiles from the bag
-        rack.fillFromBag();
+        rack.fill(scrabbleGame.getBag());
 
         // End Turn
         displayFacade.renderPlayerEndTurn(this);
@@ -70,14 +73,18 @@ public abstract class Player {
         // todo player should handle the input
         //  turn and move object just used to store
 
-        new Turn(scrabbleGame.getBoard(),this);
+        // new Turn(scrabbleGame.getBoard(),this);
     }
 
     protected abstract void confirmMoves();
 
     private void executeMoves() {
 
-        for (Move move : movesSelected) {
+        if (movesConfirmed == null) {
+            return;
+        }
+
+        for (Move move : movesConfirmed) {
             move.execute();
             score += move.getPoints();
         }

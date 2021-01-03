@@ -5,8 +5,8 @@ import java.util.Random;
 public class Tile {
 
     // Attributes
-    private char character;
-    private int points;
+    private final char character;
+    private final int points;
 
 
 
