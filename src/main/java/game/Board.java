@@ -26,8 +26,30 @@ public class Board {
      * @param row
      * @param col
      */
+
     public Square getSquareByCoords(int row, int col) {
+        // If the coords are not valid, return null
+        if (!checkCoordsValid(row, col)) {
+            return null;
+        }
+
         return squaresGrid[row][col];
+    }
+
+
+    public boolean checkCoordsValid(int row, int col) {
+        // Return false if the row is outside the bounds
+        if (row < 0 || col >= Board.NUM_ROWS) {
+            return false;
+        }
+
+        // Return false if the column is outside the bounds
+        if (col < 0 || col >= Board.NUM_COLS) {
+            return false;
+        }
+
+        // Otherwise return true
+        return true;
     }
 
     /**
@@ -64,7 +86,6 @@ public class Board {
     }
 
     public void restoreBackup(Board boardBackup) {
-
         Tile tileBackup;
 
         // For each row and column

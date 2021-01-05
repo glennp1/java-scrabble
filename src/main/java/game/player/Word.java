@@ -2,7 +2,6 @@ package main.java.game.player;
 
 import main.java.game.Square;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Word {
@@ -15,7 +14,7 @@ public class Word {
     private Square startingSquare;
 
     // *** Constructor ***
-    public Word(boolean isHorizontal, Square startingSquare) {
+    public Word(Square startingSquare, boolean isHorizontal) {
         this.isHorizontal = isHorizontal;
         this.startingSquare = startingSquare;
 
@@ -25,51 +24,21 @@ public class Word {
     // *** Methods ***
 
     private void populateWord() {
-
-        // Add starting square to the word
-        squaresInWord.add(startingSquare);
-
-        // If the word is horizontal, add the squares to the left and right
+        // If the word is horizontal, add the squares to the left,
+        // add the starting square and add those to the right
         if (isHorizontal) {
-            addSquaresLeft();
-            addSquaresRight();
+            squaresInWord.addAll(startingSquare.getAllSquaresLeft());
+            squaresInWord.add(startingSquare);
+            squaresInWord.addAll(startingSquare.getAllSquaresRight());
+            // todo sort horizontal
         }
-        // Otherwise If the word is vertical, add the squares above and below
+        // Otherwise If the word is vertical, add the squares above,
+        // add the starting square and add those below
         else {
-            addSquaresAbove();
-            addSquaresBelow();
-        }
-    }
-
-    private void addSquaresLeft() {
-        Square currentSquare = startingSquare;
-        while (currentSquare.hasTileLeft()) {
-            currentSquare = currentSquare.getSquareLeft();
-            squaresInWord.addFirst(currentSquare);
-        }
-    }
-
-    private void addSquaresRight() {
-        Square currentSquare = startingSquare;
-        while (currentSquare.hasTileRight()) {
-            currentSquare = currentSquare.getSquareRight();
-            squaresInWord.addLast(currentSquare);
-        }
-    }
-
-    private void addSquaresAbove() {
-        Square currentSquare = startingSquare;
-        while (currentSquare.hasTileAbove()) {
-            currentSquare = currentSquare.getSquareAbove();
-            squaresInWord.addFirst(currentSquare);
-        }
-    }
-
-    private void addSquaresBelow() {
-        Square currentSquare = startingSquare;
-        while (currentSquare.hasTileBelow()) {
-            currentSquare = currentSquare.getSquareBelow();
-            squaresInWord.addLast(currentSquare);
+            squaresInWord.addAll(startingSquare.getAllSquaresAbove());
+            squaresInWord.add(startingSquare);
+            squaresInWord.addAll(startingSquare.getAllSquaresBelow());
+            // todo sort vertical / add in order?
         }
     }
 

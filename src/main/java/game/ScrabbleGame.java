@@ -1,13 +1,12 @@
 package main.java.game;
 
-import main.java.game.player.HumanPlayer;
 import main.java.game.player.Player;
 
 import java.util.ArrayList;
 
 public class ScrabbleGame {
 
-    // Attributes
+    // *** Attributes ***
 
     private final Board board = new Board();
 
@@ -57,7 +56,7 @@ public class ScrabbleGame {
 
         // Add each player to the game
         for (int i = 1; i <= NUM_PLAYERS; i++) {
-            players.add(new HumanPlayer(this, i));
+            players.add(new Player(this, i));
         }
 
         // Set the current player
@@ -69,11 +68,26 @@ public class ScrabbleGame {
      */
     private void playGame() {
 
+        boolean firstTurn = true;
+
         // While the game is not over
         while (!gameOver()) {
 
             // Prompt the current player to take their turn
-            currentPlayer.takeTurn();
+            // If the current player was not successful in taking
+            // Their turn then this means they passed
+            boolean passed = !currentPlayer.takeTurn(firstTurn);
+
+            // If the player passed
+            if (passed) {
+                // The player has triggered the final round
+                triggerFinalRound(currentPlayer);
+            }
+            // If the player did not pass
+            else {
+                // It is no longer the first turn
+                firstTurn = false;
+            }
 
             // Update the current player
             updateCurrentPlayer();

@@ -2,7 +2,6 @@ package main.java.game;
 
 import main.java.game.player.*;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Square {
@@ -25,20 +24,25 @@ public class Square {
 
     // Methods
 
-    public Tile getTile() {
-        return tile;
+
+
+    public boolean hasTile() {
+        return tile != null;
     }
 
-    public char getTileCharacter() {
-        if (tile != null) {
-            return tile.getCharacter();
-        } else {
-            return '_';
+    /**
+     * Returns if a specified square has a tile, can handle null input
+     *
+     * @param square a specified square, can be null
+     * @return true if the square exists and has a tile, false otherwise
+     */
+    private static boolean hasTile(Square square) {
+        // If the square doesn't exist then return false
+        if (square == null ) {
+            return false;
         }
-    }
-
-    public boolean isEmpty() {
-        return tile == null;
+        // Otherwise return if there is a tile or not
+        return square.tile != null;
     }
 
     /**
@@ -68,58 +72,84 @@ public class Square {
         return (sameRow || sameCol);
     }
 
-    public boolean hasTileLeft() {
-        // Set the column to the left
-        int colLeft = col - 1;
-        // If the column to the left is outside the bounds return false
-        if (colLeft < 0) {
-            return false;
+    /**
+     * Returns the all neighbouring squares that have tiles in them
+     *
+     * @return a linked list of neighbouring squares that have a tile
+     */
+    public LinkedList<Square> getAllNeighbours() {
+        LinkedList<Square> neighbours = new LinkedList<>();
+
+        if (hasTile(getSquareLeft())) {
+            neighbours.add(getSquareLeft());
         }
-        // Otherwise return if the square to the left is empty
-        else {
-            return !board.getSquareByCoords(row, colLeft).isEmpty();
+        if (hasTile(getSquareRight())) {
+            neighbours.add(getSquareRight());
         }
+        if (hasTile(getSquareAbove())) {
+            neighbours.add(getSquareAbove());
+        }
+        if (hasTile(getSquareBelow())) {
+            neighbours.add(getSquareBelow());
+        }
+        return neighbours;
     }
 
-    public boolean hasTileRight() {
-        // Set the column to the right
-        int colRight = col + 1;
-        // If the column to the right is outside the bounds return false
-        if (colRight >= Board.NUM_COLS) {
-            return false;
-        }
-        // Otherwise return if the square to the right is empty
-        else {
-            return !board.getSquareByCoords(row, colRight).isEmpty();
-        }
+    public boolean formsRow() {
+        return hasTile(getSquareLeft()) || hasTile(getSquareRight());
     }
 
-    public boolean hasTileAbove() {
-        // Set the row above
-        int rowAbove = row - 1;
-        // If the row above is outside the bounds return false
-        if (rowAbove >= Board.NUM_ROWS) {
-            return false;
-        }
-        // Otherwise return if the square above is empty
-        else {
-            return !board.getSquareByCoords(rowAbove, col).isEmpty();
-        }
+    public boolean formsColumn() {
+        return hasTile(getSquareAbove()) || hasTile(getSquareBelow());
     }
 
-    public boolean hasTileBelow() {
-        // Set the row below
-        int rowBelow = row + 1;
-        // If the row below is outside the bounds return false
-        if (rowBelow < 0) {
-            return false;
+    public LinkedList<Square> getAllSquaresLeft() {
+        Square currentSquare = this;
+        LinkedList<Square> allSquaresLeft = new LinkedList<>();
+
+        while (hasTile(currentSquare.getSquareLeft())) {
+            currentSquare = currentSquare.getSquareLeft();
+            allSquaresLeft.addFirst(currentSquare);
         }
-        // Otherwise return if the square below is empty
-        else {
-            return !board.getSquareByCoords(rowBelow, col).isEmpty();
-        }
+
+        return allSquaresLeft;
     }
 
+    public LinkedList<Square> getAllSquaresRight() {
+        Square currentSquare = this;
+        LinkedList<Square> allSquaresRight = new LinkedList<>();
+
+        while (hasTile(currentSquare.getSquareRight())) {
+            currentSquare = currentSquare.getSquareRight();
+            allSquaresRight.addLast(currentSquare);
+        }
+
+        return allSquaresRight;
+    }
+
+    public LinkedList<Square> getAllSquaresAbove() {
+        Square currentSquare = this;
+        LinkedList<Square> allSquaresAbove = new LinkedList<>();
+
+        while (hasTile(currentSquare.getSquareAbove())) {
+            currentSquare = currentSquare.getSquareAbove();
+            allSquaresAbove.addFirst(currentSquare);
+        }
+
+        return allSquaresAbove;
+    }
+
+    public LinkedList<Square> getAllSquaresBelow() {
+        Square currentSquare = this;
+        LinkedList<Square> allSquaresBelow = new LinkedList<>();
+
+        while (hasTile(currentSquare.getSquareBelow())) {
+            currentSquare = currentSquare.getSquareBelow();
+            allSquaresBelow.addLast(currentSquare);
+        }
+
+        return allSquaresBelow;
+    }
 
 
     public Square getSquareLeft() {
@@ -142,7 +172,17 @@ public class Square {
         return board.getSquareByCoords(rowBelow, col);
     }
 
+    public char getTileCharacter() {
+        if (tile != null) {
+            return tile.getCharacter();
+        } else {
+            return '_';
+        }
+    }
 
+    public Tile getTile() {
+        return tile;
+    }
 
     public void setTile(Tile tile) {
         this.tile = tile;

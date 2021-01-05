@@ -5,6 +5,7 @@ public class BoardDisplay {
     // Attributes
 
     private static final String BOARD_HEADER =
+            "\n" +
             "     ________ Board-Start ________ \n" +
             "     a b c d e f g h i j k l m n o \n" +
             "     _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n";

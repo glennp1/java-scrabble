@@ -2,6 +2,7 @@ package main.java.game;
 
 import main.java.display.*;
 import main.java.game.player.Player;
+import main.java.game.player.Word;
 
 import java.util.ArrayList;
 
@@ -80,6 +81,14 @@ public class DisplayFacade {
         int playerNumber = player.getNumber();
 
         playerTurnDisplay.renderEnd(playerNumber);
+    }
+
+    public void renderWordPoints(Player player, Word word) {
+        int playerNumber = player.getNumber();
+        String wordAsString = word.toString();
+        int points = word.getPoints();
+
+        playerScoreDisplay.renderWordPoints(playerNumber, wordAsString, points);
     }
 
 

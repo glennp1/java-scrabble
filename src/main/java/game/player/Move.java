@@ -66,13 +66,13 @@ public class Move {
     private boolean squareIsValid() {
         DisplayFacade displayFacade = DisplayFacade.getInstance();
 
-        // Ensure the square selected is not already occupied by a tile
-        if (!squareSelected.isEmpty()) {
+        // If the square selected is already occupied by a tile, it is not valid
+        if (squareSelected.hasTile()) {
             displayFacade.renderError("Square selected is already occupied.");
             return false;
         }
 
-        // Ensure the square selected is in line with the other moves in the turn
+        // If it is not in line with the other moves in the turn, it is not valid
         if (!squareSelected.isInLine(parentTurn.getMovesCompleted())) {
             displayFacade.renderError("Square selected is not in line.");
             return false;
@@ -94,15 +94,6 @@ public class Move {
         // Place it on the square
         squareSelected.setTile(tileSelected);
     }
-
-    public boolean formsRow() {
-        return squareSelected.hasTileLeft() || squareSelected.hasTileRight();
-    }
-
-    public boolean formsColumn() {
-        return squareSelected.hasTileAbove() || squareSelected.hasTileBelow();
-    }
-
 
     public Square getSquareSelected() {
         return squareSelected;
