@@ -4,26 +4,41 @@ import java.util.LinkedList;
 import java.util.Random;
 
 /**
- * Factory helper class used to instantiate each tile.
- * Separated from the Bag class so as to increase cohesion,
+ * <p>Factory helper class used to instantiate each tile.<p/>
+ * <p>Separated from the Bag class so as to increase cohesion,
  * and to isolate the logic used in the creation of tiles in case this
- * is updated
+ * is updated <p/>
  */
 public class TileFactory {
 
     // *** Attributes ***
-    private final int NUM_START_TILES = 100;
+    /**
+     * The number of starting tiles, currently fixed at 100
+     */
+    private static final int NUM_START_TILES = 100;
 
-    private final char START_OF_ALPHABET = 'a';
-    private final int ALPHABET_LENGTH = 26;
+    /**
+     * The first letter in the alphabet, used in character calculations
+     */
+    private static final char START_OF_ALPHABET = 'a';
 
-    // For now this is a constant, this may be changed in future iterations
-    private final int DEFAULT_TILE_POINTS = 1;
+    /**
+     * The length of the alphabet, used in character calculations
+     */
+    private static final int ALPHABET_LENGTH = 26;
+
+    /**
+     * The points assigned to each tile.
+     * For now this is a constant, this may be changed in future.
+     */
+    private static final int DEFAULT_TILE_POINTS = 1;
 
 
     // *** Constructor ***
+    /**
+     * Returns a new instance of the Tile Factory
+     */
     public TileFactory() {
-
     }
 
     // *** Methods ***

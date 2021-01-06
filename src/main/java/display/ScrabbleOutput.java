@@ -2,6 +2,10 @@ package main.java.display;
 
 import java.util.ArrayList;
 
+/**
+ * Handles the output of the scrabble game to the console.
+ * Has been separated from the game logic in case changes are made in the future
+ */
 public class ScrabbleOutput {
 
     // *** Attributes ***
