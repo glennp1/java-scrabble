@@ -1,9 +1,9 @@
 package game;
 
 /**
- * <p>Represents a single tile in the game.<p/>
+ * <p>Represents a single tile in the game.</p>
  * <p>Can be stored by a number of classes,
- * notably the bag, rack and board <p/>
+ * notably the bag, rack and board </p>
  */
 public class Tile {
 

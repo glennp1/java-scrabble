@@ -3,10 +3,10 @@ package game;
 import java.util.LinkedList;
 
 /**
- * <p>Represents a square on the the scrabble board.<p/>
+ * <p>Represents a square on the the scrabble board.</p>
  * <p>Each square can contain a single tile, and has an associated number of points.
  * The square class also has a number of methods that enable it to
- * retrieve the squares around it and the tiles in those squares <p/>
+ * retrieve the squares around it and the tiles in those squares </p>
  */
 public class Square {
 

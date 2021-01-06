@@ -1,10 +1,10 @@
 package game;
 
 /**
- * <p>Factory helper class used to instantiate each square.<p/>
+ * <p>Factory helper class used to instantiate each square.</p>
  * <p>Separated from the Board class so as to increase cohesion,
  * and to isolate the logic used in the creation of squares in case this
- * is updated <p/>
+ * is updated </p>
  */
 public class SquareFactory {
 

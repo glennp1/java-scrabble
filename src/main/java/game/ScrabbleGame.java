@@ -4,49 +4,71 @@ import game.player.Player;
 
 import java.util.ArrayList;
 
+/**
+ * <p>Contains all the logic required for the game to run,
+ * but does not render it.</p>
+ * <p>Encapsulates the board, bag and players in the game and is
+ * responsible for prompting each players turn until the game is over
+ * and then deciding the games winner.</p>
+ */
 public class ScrabbleGame {
 
     // *** Constants ***
-
     /**
-     *
+     * The number of players in the game, could be changed in future
      */
     private static final int NUM_PLAYERS = 2;
 
     /**
-     *
+     * The index of the first player, in this case we start at 0
      */
     private static final int FIRST_PLAYER_INDEX = 0;
 
     // *** Attributes ***
-
     /**
-     *
+     * The board that the game is played on
      */
     private final Board board = new Board();
 
     /**
-     *
+     * The bag that the player draws tiles from to place on their rack
      */
     private final Bag bag = new Bag();
 
     /**
-     *
+     * The list of players in the game
      */
     private final ArrayList<Player> players = new ArrayList<Player>();
 
-
+    /**
+     * The current player taking their turn
+     */
     private Player currentPlayer = null;
 
-    private boolean finalRound = false; // Stores if it is the final round of the game
-    private Player finalRoundPlayer = null; // The player that caused the final round
+    /**
+     * Stores if it is the final round of the game
+     */
+    private boolean finalRound = false;
 
+    /**
+     * Stores the player that caused the final round
+     */
+    private Player finalRoundPlayer = null;
+
+    /**
+     * Stores the winner of the game
+     */
     private Player winner = null;
+
+    /**
+     * Stores if the game was a draw
+     */
     private boolean draw = false;
 
     // *** Constructor ***
     /**
-     *
+     * Creates an instance of the game, initialising the dictionary and players
+     * in the process. Then the game is played, and an outcome is reached.
      */
     public ScrabbleGame() {
 
@@ -59,7 +81,6 @@ public class ScrabbleGame {
         // Decide the winner of the game and show the result
         decideGameOutcome();
         showGameOutcome();
-
     }
 
     // *** Methods ***
@@ -71,6 +92,10 @@ public class ScrabbleGame {
         EnglishDictionary.getInstance();
     }
 
+    /**
+     * Initialise all the players in the game. For now this logic is fairly
+     * straight forward and so a separate factory class has not been created.
+     */
     private void initialisePlayers() {
 
         // Add each player to the game
@@ -83,7 +108,11 @@ public class ScrabbleGame {
     }
 
     /**
-     *
+     * <p>Prompts the game to start.</p>
+     * <p>This consists of a series of turns being
+     * made by each player until either a player passes, at which point the
+     * final round is triggered. Each other player gets one more chance to make
+     * a word before the game ends.</p>
      */
     private void playGame() {
 
@@ -114,7 +143,8 @@ public class ScrabbleGame {
     }
 
     /**
-     *
+     * Updates the current player, either incrementing by one or returning
+     * to the start of the array list if the end is reached
      */
     private void updateCurrentPlayer() {
 
@@ -135,7 +165,10 @@ public class ScrabbleGame {
     }
 
     /**
+     * Triggers the game to enter its final round, taking note of the player
+     * that caused the trigger, as the game will stop on their next turn
      *
+     * @param finalRoundPlayer the player that triggered the final round
      */
     public void triggerFinalRound(Player finalRoundPlayer) {
 
@@ -150,15 +183,17 @@ public class ScrabbleGame {
     }
 
     /**
+     * Returns if the game is over yet, that is, if it is the final round
+     * and it is the turn of the player that triggered the final round
      *
-     * @return
+     * @return true if the game is over, false otherwise
      */
     private boolean gameOver(){
         return (finalRound && currentPlayer == finalRoundPlayer);
     }
 
     /**
-     *
+     * Decides the winner of the game or if it is a draw
      */
     private void decideGameOutcome() {
         int highestScore = -1;
@@ -178,43 +213,47 @@ public class ScrabbleGame {
     }
 
     /**
-     *
+     * Prompts the display to show the winner of the game or
+     * if it was a draw. The board is shown, followed by the scores
+     * scores of the players and then finally the outcome
      */
     private void showGameOutcome() {
         // Display the outcome of the game
-        DisplayFacade displayFacade = DisplayFacade.getInstance();
+        DisplayFacade display = DisplayFacade.getInstance();
 
         // The board
-        displayFacade.renderBoard(board);
+        display.renderBoard(board);
 
         // Each player's score
         for (Player player : players) {
-            displayFacade.renderPlayerScore(player);
+            display.renderPlayerScore(player);
         }
 
         // If it is a draw, render a draw
         if (draw) {
-            displayFacade.renderDraw();
+            display.renderDraw();
         }
         // Otherwise render the winner
         else {
-            displayFacade.renderWinner(winner);
+            display.renderWinner(winner);
         }
     }
 
     /**
-     *
-     * @return
+     * Getter for the board, used to instantiate each turn
+     * @return the board that the game is played on
+     */
+    public Board getBoard() {
+        return board;
+    }
+
+    /**
+     * Getter for the bag, used when filling the players rack with tiles
+     * @return the bag that the player draws tiles from to place on their rack
      */
     public Bag getBag() {
         return bag;
     }
 
-    /**
-     *
-     * @return
-     */
-    public Board getBoard() {
-        return board;
-    }
+
 }

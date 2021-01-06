@@ -42,12 +42,12 @@ public class Move {
      * the tile is valid in the process. Then the tile is stored.
      */
     public void selectTile() {
-        DisplayFacade displayFacade = DisplayFacade.getInstance();
+        DisplayFacade display = DisplayFacade.getInstance();
         Rack rackCurrent = parentTurn.getRackCurrent();
 
         // Request a tile input
         do {
-            char charSelected = displayFacade.requestCharInput();
+            char charSelected = display.requestCharInput();
             tileSelected = rackCurrent.getTileByChar(charSelected);
         }
         // Continue until the tile selected is valid
@@ -72,13 +72,13 @@ public class Move {
      * the square is valid in the process. Then the square is stored.
      */
     public void selectSquare() {
-        DisplayFacade displayFacade = DisplayFacade.getInstance();
+        DisplayFacade display = DisplayFacade.getInstance();
         Board boardCurrent = parentTurn.getBoardCurrent();
 
         // Request a square input
         do {
-            int rowSelected = displayFacade.requestRowInput();
-            int colSelected = displayFacade.requestColInput();
+            int rowSelected = display.requestRowInput();
+            int colSelected = display.requestColInput();
             squareSelected = boardCurrent.getSquareByCoords(rowSelected, colSelected);
         }
         // Continue until the square selected is valid
@@ -92,18 +92,18 @@ public class Move {
      * @return true if the square is valid, false otherwise
      */
     private boolean squareIsValid() {
-        DisplayFacade displayFacade = DisplayFacade.getInstance();
+        DisplayFacade display = DisplayFacade.getInstance();
 
         // If the square selected is already occupied by a tile, it is not valid
         if (squareSelected.hasTile()) {
-            displayFacade.renderError("Square selected is already occupied.");
+            display.renderError("Square selected is already occupied.");
             return false;
         }
 
         // If the square is not in line with the other squares from the
         // moves in the turn, it is not valid
         if (!squareSelected.isInLine(parentTurn.getMovesCompletedSquares())) {
-            displayFacade.renderError("Square selected is not in line.");
+            display.renderError("Square selected is not in line.");
             return false;
         }
 

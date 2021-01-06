@@ -4,10 +4,10 @@ import java.util.LinkedList;
 import java.util.Random;
 
 /**
- * <p>Factory helper class used to instantiate each tile.<p/>
+ * <p>Factory helper class used to instantiate each tile.</p>
  * <p>Separated from the Bag class so as to increase cohesion,
  * and to isolate the logic used in the creation of tiles in case this
- * is updated <p/>
+ * is updated </p>
  */
 public class TileFactory {
 
