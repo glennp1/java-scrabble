@@ -4,6 +4,8 @@ import game.player.Player;
 
 import java.util.ArrayList;
 
+// todo make all constants separate and static
+
 public class ScrabbleGame {
 
     // *** Constants ***
@@ -43,8 +45,6 @@ public class ScrabbleGame {
 
     private Player winner = null;
     private boolean draw = false;
-
-    // todo maybe constants should be static ??? yes
 
     // *** Constructor ***
     /**

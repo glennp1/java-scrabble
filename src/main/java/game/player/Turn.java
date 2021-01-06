@@ -150,9 +150,6 @@ public class Turn {
         // For each potential word
         for (Word word : potentialWords) {
 
-            // todo remove
-            System.out.println(word.toString());
-
             // If the word is NOT a valid english word, the moves are not valid
             if (!englishDictionary.checkIfValid(word.toString())) {
                 display.renderError(
@@ -335,7 +332,7 @@ public class Turn {
     }
 
 
-        // todo update the words formed in the process
+        // todo update the words formed in the process??
 
     public Board getBoardCurrent() {
         return boardCurrent;

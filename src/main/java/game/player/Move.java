@@ -127,9 +127,4 @@ public class Move {
     public Square getSquareSelected() {
         return squareSelected;
     }
-
-    // todo maybe delete?
-    public Tile getTileSelected() {
-        return tileSelected;
-    }
 }

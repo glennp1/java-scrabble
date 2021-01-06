@@ -81,5 +81,3 @@ public class EnglishDictionary {
         return indexOfWord >= 0;
     }
 }
-
-// todo could make a separate dictionary class

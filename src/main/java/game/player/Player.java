@@ -36,7 +36,6 @@ public class Player {
      * @return
      */
     public boolean takeTurn(boolean firstTurn) {
-        // todo separate human and npc turn
         // Start a new turn for the player
         turnCurrent = new Turn(scrabbleGame.getBoard(),this, firstTurn);
 

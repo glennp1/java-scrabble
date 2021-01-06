@@ -4,7 +4,6 @@ public class Board {
 
     // *** Attributes ***
 
-    // todo remove
     public static final int NUM_ROWS = 15;
     public static final int NUM_COLS = 15;
 

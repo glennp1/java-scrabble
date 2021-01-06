@@ -7,11 +7,11 @@ import java.util.LinkedList;
 public class Word {
 
     // *** Attributes ***
-    private LinkedList<Square> squaresInWord = new LinkedList<>();
+    private final LinkedList<Square> squaresInWord = new LinkedList<>();
 
     // True if horizontal, false if vertical
-    private boolean isHorizontal;
-    private Square startingSquare;
+    private final boolean isHorizontal;
+    private final Square startingSquare;
 
     // *** Constructor ***
     public Word(Square startingSquare, boolean isHorizontal) {
@@ -30,7 +30,6 @@ public class Word {
             squaresInWord.addAll(startingSquare.getAllSquaresLeft());
             squaresInWord.add(startingSquare);
             squaresInWord.addAll(startingSquare.getAllSquaresRight());
-            // todo sort horizontal
         }
         // Otherwise If the word is vertical, add the squares above,
         // add the starting square and add those below
@@ -38,7 +37,6 @@ public class Word {
             squaresInWord.addAll(startingSquare.getAllSquaresAbove());
             squaresInWord.add(startingSquare);
             squaresInWord.addAll(startingSquare.getAllSquaresBelow());
-            // todo sort vertical / add in order?
         }
     }
 
