@@ -1,6 +1,6 @@
-package main.java.game.player;
+package game.player;
 
-import main.java.game.*;
+import game.*;
 
 /**
  * Handles the input of, storage of and execution of

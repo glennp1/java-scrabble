@@ -1,22 +1,41 @@
-package main.java.game;
+package game;
 
-import main.java.game.player.Player;
+import game.player.Player;
 
 import java.util.ArrayList;
 
 public class ScrabbleGame {
 
+    // *** Constants ***
+
+    /**
+     *
+     */
+    private static final int FIRST_PLAYER_INDEX = 0;
+
     // *** Attributes ***
 
+    /**
+     *
+     */
     private final Board board = new Board();
 
+    /**
+     *
+     */
     private final Bag bag = new Bag();
 
+    /**
+     *
+     */
     private static final int NUM_PLAYERS = 2;
 
+    /**
+     *
+     */
     private final ArrayList<Player> players = new ArrayList<Player>();
 
-    private static final int FIRST_PLAYER_INDEX = 0;
+
     private Player currentPlayer = null;
 
     private boolean finalRound = false; // Stores if it is the final round of the game
@@ -28,7 +47,9 @@ public class ScrabbleGame {
     // todo maybe constants should be static ??? yes
 
     // *** Constructor ***
-
+    /**
+     *
+     */
     public ScrabbleGame() {
 
         initialiseDictionary();
@@ -42,8 +63,8 @@ public class ScrabbleGame {
         showGameOutcome();
 
     }
-    // *** Methods ***
 
+    // *** Methods ***
     /**
      * Initialises an instance of the dictionary at the start of the game
      * This ensures it does not have to load later
@@ -158,6 +179,9 @@ public class ScrabbleGame {
         }
     }
 
+    /**
+     *
+     */
     private void showGameOutcome() {
         // Display the outcome of the game
         DisplayFacade displayFacade = DisplayFacade.getInstance();
@@ -180,10 +204,18 @@ public class ScrabbleGame {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public Bag getBag() {
         return bag;
     }
 
+    /**
+     *
+     * @return
+     */
     public Board getBoard() {
         return board;
     }

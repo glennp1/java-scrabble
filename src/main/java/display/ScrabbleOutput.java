@@ -1,4 +1,4 @@
-package main.java.display;
+package display;
 
 import java.util.ArrayList;
 

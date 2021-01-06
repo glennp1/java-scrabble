@@ -1,6 +1,6 @@
-package main.java.game.player;
+package game.player;
 
-import main.java.game.Square;
+import game.Square;
 
 import java.util.LinkedList;
 

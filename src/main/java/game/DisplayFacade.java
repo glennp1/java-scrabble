@@ -1,8 +1,8 @@
-package main.java.game;
+package game;
 
-import main.java.display.*;
-import main.java.game.player.Player;
-import main.java.game.player.Word;
+import display.*;
+import game.player.Player;
+import game.player.Word;
 
 import java.util.ArrayList;
 

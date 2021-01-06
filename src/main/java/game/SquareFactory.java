@@ -1,4 +1,4 @@
-package main.java.game;
+package game;
 
 /**
  * <p>Factory helper class used to instantiate each square.<p/>

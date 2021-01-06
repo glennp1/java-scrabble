@@ -1,4 +1,4 @@
-package main.java.game;
+package game;
 
 /**
  * <p>Represents a single tile in the game.<p/>

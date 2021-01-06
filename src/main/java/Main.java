@@ -1,6 +1,4 @@
-package main.java;
-
-import main.java.game.ScrabbleGame;
+import game.ScrabbleGame;
 
 /**
  * The main class, which acts as an entry point to the program.
