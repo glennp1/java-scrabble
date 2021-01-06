@@ -6,6 +6,8 @@ import java.util.LinkedList;
 
 public class Word {
 
+    // *** Constants ***
+
     // *** Attributes ***
     private final LinkedList<Square> squaresInWord = new LinkedList<>();
 

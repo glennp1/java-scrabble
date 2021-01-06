@@ -6,20 +6,20 @@ import java.util.LinkedList;
 
 public class Turn {
 
+    // *** Constants ***
+
+
     // *** Attributes ***
 
-    private Player player;
-    private Board boardCurrent;
-    private Rack rackCurrent;
+    private final Player player;
+    private final Board boardCurrent;
+    private final Rack rackCurrent;
 
-    private Board boardAtStart;
-    private Rack rackAtStart;
+    private final Board boardAtStart;
+    private final Rack rackAtStart;
 
     // Stores if it is the first turn of the game
-    private boolean firstTurn;
-
-    // Stores if the player wishes to pass
-    private boolean pass = false;
+    private final boolean firstTurn;
 
     // A set of moves completed by the player
     private LinkedList<Move> movesCompleted = new LinkedList<>();

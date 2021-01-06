@@ -6,9 +6,10 @@ import java.util.Collections;
 
 public class EnglishDictionary {
 
-    // *** Attributes ***
+    // *** Constants ***
     private static final String PATH_NAME = "src/main/resources/wordsAlpha.txt";
 
+    // *** Attributes ***
     private static EnglishDictionary instance = null;
 
     private ArrayList<String> englishWords;

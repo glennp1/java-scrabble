@@ -8,12 +8,13 @@ package game;
  */
 public class SquareFactory {
 
-    // *** Attributes ***
+    // *** Constants ***
     /**
      * Represents a square that is empty, that is, one that's tile is null
      */
     private static final Tile DEFAULT_TILE = null;
 
+    // *** Attributes ***
     /**
      * The default points that a square is worth, may be changed later
      */

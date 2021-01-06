@@ -4,18 +4,19 @@ import game.*;
 
 public class Player {
 
+    // *** Constants ***
+    private static final int STARTING_SCORE = 0;
+
     // *** Attributes ***
-    protected final ScrabbleGame scrabbleGame;
+    private final ScrabbleGame scrabbleGame;
 
-    protected final int number;
+    private final int number;
 
-    protected final int STARTING_SCORE = 0;
+    private int score = STARTING_SCORE;
 
-    protected int score = STARTING_SCORE;
+    private final Rack rack;
 
-    protected final Rack rack;
-
-    protected Turn turnCurrent;
+    private Turn turnCurrent;
 
     // *** Constructor ***
 

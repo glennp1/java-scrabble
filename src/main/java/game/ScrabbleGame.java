@@ -4,11 +4,14 @@ import game.player.Player;
 
 import java.util.ArrayList;
 
-// todo make all constants separate and static
-
 public class ScrabbleGame {
 
     // *** Constants ***
+
+    /**
+     *
+     */
+    private static final int NUM_PLAYERS = 2;
 
     /**
      *
@@ -26,11 +29,6 @@ public class ScrabbleGame {
      *
      */
     private final Bag bag = new Bag();
-
-    /**
-     *
-     */
-    private static final int NUM_PLAYERS = 2;
 
     /**
      *

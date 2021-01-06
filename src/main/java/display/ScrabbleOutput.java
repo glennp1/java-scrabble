@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class ScrabbleOutput {
 
-    // *** Attributes ***
+    // *** Constants ***
 
     private static final String BOARD_HEADER =
             "\n" +
@@ -21,8 +21,12 @@ public class ScrabbleOutput {
 
     private static final int FIRST_ROW = 1;
 
+    // *** Attributes ***
+
     // *** Constructor ***
 
+    public ScrabbleOutput() {
+    }
 
     // *** Methods ***
     public void outputBoard(char[][] formattedBoard) {

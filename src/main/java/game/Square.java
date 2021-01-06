@@ -1,7 +1,5 @@
 package game;
 
-import game.player.*;
-
 import java.util.LinkedList;
 
 /**
@@ -11,6 +9,8 @@ import java.util.LinkedList;
  * retrieve the squares around it and the tiles in those squares <p/>
  */
 public class Square {
+
+    // *** Constants ***
 
     // *** Attributes ***
     /**

@@ -2,10 +2,12 @@ package game;
 
 public class Board {
 
-    // *** Attributes ***
-
+    // *** Constants ***
     public static final int NUM_ROWS = 15;
+
     public static final int NUM_COLS = 15;
+
+    // *** Attributes ***
 
     private Square[][] squaresGrid;
 

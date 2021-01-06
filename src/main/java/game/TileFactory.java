@@ -11,7 +11,7 @@ import java.util.Random;
  */
 public class TileFactory {
 
-    // *** Attributes ***
+    // *** Constants ***
     /**
      * The number of starting tiles, currently fixed at 100
      */
@@ -33,6 +33,7 @@ public class TileFactory {
      */
     private static final int DEFAULT_TILE_POINTS = 1;
 
+    // *** Attributes ***
 
     // *** Constructor ***
     /**

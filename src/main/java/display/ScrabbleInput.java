@@ -4,15 +4,17 @@ import java.util.Scanner;
 
 public class ScrabbleInput {
 
-    // *** Attributes ***
+    // *** Constants ***
 
     // Included so that matrices start at 0 not 1
-    private final int ROW_OFFSET = 1;
+    private static final int ROW_OFFSET = 1;
 
-    private final int FIRST_POSITION = 0;
+    private static final int FIRST_POSITION = 0;
 
-    private final char START_OF_ALPHABET = 'a';
-    private final String YES = "y";
+    private static final char START_OF_ALPHABET = 'a';
+    private static final String YES = "y";
+
+    // *** Attributes ***
 
     // *** Constructor ***
 

@@ -7,19 +7,17 @@ import java.util.ArrayList;
 
 public class Rack {
 
+    // *** Constants ***
+    private static final int MAX_RACK_SIZE = 7;
+
     // *** Attributes ***
-    private final int MAX_RACK_SIZE = 7;
-
-    private ArrayList<Tile> tiles = new ArrayList<>();
-
-    // todo rename / make clearer
+    private final ArrayList<Tile> tiles = new ArrayList<>();
 
     // *** Constructor ***
     public Rack() {
     }
 
     // *** Methods ***
-
     /**
      * Fill the player's rack from the bag based on the number of tiles missing
      */

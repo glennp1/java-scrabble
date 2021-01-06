@@ -8,6 +8,8 @@ import game.*;
  */
 public class Move {
 
+    // *** Constants ***
+
     // *** Attributes ***
     /**
      * Stores the square that has been selected for the move

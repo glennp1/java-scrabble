@@ -4,6 +4,8 @@ import java.util.LinkedList;
 
 public class Bag {
 
+    // *** Constants ***
+
     // *** Attributes ***
     private final TileFactory tileFactory = new TileFactory();
     private final LinkedList<Tile> tiles = new LinkedList<>();

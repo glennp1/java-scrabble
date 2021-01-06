@@ -7,6 +7,8 @@ package game;
  */
 public class Tile {
 
+    // *** Constants ***
+
     // *** Attributes ***
     /**
      * The character that appears on the face of the tile
