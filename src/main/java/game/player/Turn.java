@@ -255,8 +255,6 @@ public class Turn {
         return (rowFirstMove == rowLastMove);
     }
 
-
-
     /**
      * Returns if the moves completed connect with a pre existing tile
      *
@@ -275,7 +273,7 @@ public class Turn {
 
             // If any of these neighbouring squares is not a part of moves
             for (Square neighbour : neighbours) {
-                if (!squareWithinMoves(neighbour)) {
+                if (!isSquareWithinMoves(neighbour)) {
                     // Then the moves connect with another existing square
                     return true;
                 }
@@ -292,7 +290,7 @@ public class Turn {
      * @param square the square to check
      * @return true if the square is present in moves, false otherwise
      */
-    private boolean squareWithinMoves(Square square) {
+    private boolean isSquareWithinMoves(Square square) {
         // If one of the squares within the moves completed matches
         for (Move move :movesCompleted) {
             if (square == move.getSquareSelected()) {
@@ -340,6 +338,14 @@ public class Turn {
 
     public Rack getRackCurrent() {
         return rackCurrent;
+    }
+
+    public LinkedList<Square> getMovesCompletedSquares() {
+        LinkedList<Square> squares = new LinkedList<>();
+        for (Move move : movesCompleted) {
+            squares.add(move.getSquareSelected());
+        }
+        return squares;
     }
 
     public LinkedList<Move> getMovesCompleted() {

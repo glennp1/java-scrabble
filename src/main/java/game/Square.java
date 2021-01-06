@@ -60,24 +60,24 @@ public class Square {
 
     // *** Methods ***
     /**
-     * Returns if a square is in line with the squares within a series of moves
+     * Returns if a square is in line with a linked listed of squares
      * That is, they share either a row or a column with one another
      *
-     * @param moves A linked list of moves
+     * @param listOfSquares A linked list of squares
      * @return true if squares are in line, false otherwise
      */
-    public boolean isInLine(LinkedList<Move> moves) {
+    public boolean isInLine(LinkedList<Square> listOfSquares) {
         // To store if the row or column match
         boolean sameRow = true;
         boolean sameCol = true;
 
         // Iterate through each of the squares, recording if the row or column
         // deviates from the row or column of this square
-        for (Move move : moves) {
-            if (this.row != move.getSquareSelected().getRow()) {
+        for (Square square : listOfSquares) {
+            if (this.row != square.getRow()) {
                 sameRow = false;
             }
-            if (this.col != move.getSquareSelected().getCol()) {
+            if (this.col != square.getCol()) {
                 sameCol = false;
             }
         }

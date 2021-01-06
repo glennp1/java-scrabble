@@ -1,5 +1,6 @@
 package game;
 
+import game.player.Move;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -69,6 +70,24 @@ class SquareTest {
 
     @Test
     void isInLine() {
+        Square square;
+        LinkedList<Square> listOfSquares = new LinkedList<>();
+
+        // If have a series of squares at (8,9) and (8,10)
+        listOfSquares.add(board.getSquareByCoords(8,9));
+        listOfSquares.add(board.getSquareByCoords(8,10));
+
+        // And if the selected square is (8,8)
+        square = board.getSquareByCoords(8,8);
+
+        // Then we should should expect the method to return true
+        assertTrue(square.isInLine(listOfSquares));
+
+        // However if the square selected is (9,9)
+        square = board.getSquareByCoords(9,9);
+
+        // Then we should should expect the method to return false
+        assertFalse(square.isInLine(listOfSquares));
     }
 
     @Test
@@ -107,21 +126,18 @@ class SquareTest {
 
     @Test
     void getAllNeighbours() {
-        // todo
         Square squareInput;
         LinkedList<Square> squaresOutput = new LinkedList<>();
 
         // If we start at: o (5,7)
         squareInput = board.getSquareByCoords(5,7);
 
-        // We should expect to get: r, a, d, i
-        squaresOutput.add(board.getSquareByCoords(5,3));
-        squaresOutput.add(board.getSquareByCoords(5,4));
-        squaresOutput.add(board.getSquareByCoords(5,5));
+        // We should expect to get: i, o, p
         squaresOutput.add(board.getSquareByCoords(5,6));
+        squaresOutput.add(board.getSquareByCoords(4,7));
+        squaresOutput.add(board.getSquareByCoords(6,7));
 
-
-        assertEquals(squaresOutput, squareInput.getAllSquaresLeft());
+        assertEquals(squaresOutput, squareInput.getAllNeighbours());
     }
 
     @Test

@@ -98,8 +98,9 @@ public class Move {
             return false;
         }
 
-        // If it is not in line with the other moves in the turn, it is not valid
-        if (!squareSelected.isInLine(parentTurn.getMovesCompleted())) {
+        // If the square is not in line with the other squares from the
+        // moves in the turn, it is not valid
+        if (!squareSelected.isInLine(parentTurn.getMovesCompletedSquares())) {
             displayFacade.renderError("Square selected is not in line.");
             return false;
         }
