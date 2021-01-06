@@ -2,6 +2,9 @@ package main.java;
 
 import main.java.game.ScrabbleGame;
 
+/**
+ * The main class, which acts as an entry point to the program.
+ */
 public class Main {
 
     // Application entry point

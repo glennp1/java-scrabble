@@ -2,7 +2,7 @@ package main.java.game;
 
 public class Board {
 
-    // Attributes
+    // *** Attributes ***
 
     // todo remove
     public static final int NUM_ROWS = 15;
@@ -12,12 +12,12 @@ public class Board {
 
     private final SquareFactory squareFactory = new SquareFactory(this);
 
-    // Constructor
+    // *** Constructor ***
     public Board() {
         squaresGrid = squareFactory.getNewSquaresGrid();
     }
 
-    // Methods
+    // *** Methods ***
 
     /**
      * Gets a specific square on the board, specified

@@ -2,27 +2,44 @@ package main.java.game.player;
 
 import main.java.game.*;
 
+/**
+ * Handles the input of, storage of and execution of
+ * a single set of commands relating to a player's turn
+ */
 public class Move {
 
     // *** Attributes ***
-
+    /**
+     * Stores the square that has been selected for the move
+     */
     private Square squareSelected;
+
+    /**
+     * Stores the tile that has been selected for the move
+     */
     private Tile tileSelected;
-    private Turn parentTurn;
+
+    /**
+     * Stores the parent turn, that is, the turn to which this move belongs
+     */
+    private final Turn parentTurn;
 
     // *** Constructor ***
-
+    /**
+     * Creates an instance of move with reference to the specified turn.
+     *
+     * @param parentTurn the specified turn the move is a part of
+     */
     public Move(Turn parentTurn) {
         this.parentTurn = parentTurn;
-
-        selectTile();
-        selectSquare();
-        execute();
     }
 
     // *** Methods ***
-
-    private void selectTile() {
+    /**
+     * Prompts the player to select a tile for their move, ensuring
+     * the tile is valid in the process. Then the tile is stored.
+     */
+    public void selectTile() {
         DisplayFacade displayFacade = DisplayFacade.getInstance();
         Rack rackCurrent = parentTurn.getRackCurrent();
 
@@ -35,7 +52,11 @@ public class Move {
         while (!tileIsValid());
     }
 
-    // todo ensure updated rack is checked
+    /**
+     * Returns if the tile selected is contained within the player's rack
+     *
+     * @return true if the tile selected is not null, false otherwise
+     */
     private boolean tileIsValid() {
         if (tileSelected == null) {
             DisplayFacade.getInstance().renderError("Tile selected is not in the rack");
@@ -44,7 +65,11 @@ public class Move {
         return true;
     }
 
-    private void selectSquare() {
+    /**
+     * Prompts the player to select a square for their move, ensuring
+     * the square is valid in the process. Then the square is stored.
+     */
+    public void selectSquare() {
         DisplayFacade displayFacade = DisplayFacade.getInstance();
         Board boardCurrent = parentTurn.getBoardCurrent();
 
@@ -59,7 +84,8 @@ public class Move {
     }
 
     /**
-     * Returns if a square selected as a part of a move is valid
+     * Returns if a square selected as a part of a move is valid.
+     * The selected square must be empty, and in line with other moves.
      *
      * @return true if the square is valid, false otherwise
      */
@@ -83,11 +109,10 @@ public class Move {
     }
 
     /**
-     * Executes the specific move, causing a tile to be removed from the rack
-     * and placed on the board
-     *
+     * Executes the specific move, Causing a tile to be removed from the rack
+     * and placed on the board.
      */
-    private void execute() {
+    public void execute() {
         // Remove the tile from the rack
         parentTurn.getRackCurrent().removeTile(tileSelected);
 
@@ -95,10 +120,15 @@ public class Move {
         squareSelected.setTile(tileSelected);
     }
 
+    /**
+     * Getter for the square selected as a part of the move
+     * @return the square selected as a part of the move
+     */
     public Square getSquareSelected() {
         return squareSelected;
     }
 
+    // todo maybe delete?
     public Tile getTileSelected() {
         return tileSelected;
     }

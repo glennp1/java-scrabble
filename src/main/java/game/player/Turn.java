@@ -103,6 +103,10 @@ public class Turn {
             // Have the player select a new move
             Move oneMove = new Move(this);
 
+            oneMove.selectTile();
+            oneMove.selectSquare();
+            oneMove.execute();
+
             // Add it to the completed moves
             movesCompleted.add(oneMove);
         }

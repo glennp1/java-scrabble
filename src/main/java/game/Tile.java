@@ -4,18 +4,20 @@ import java.util.Random;
 
 public class Tile {
 
-    // Attributes
+    // *** Attributes ***
     private final char character;
     private final int points;
 
 
 
-    // Constructor
+    // *** Constructor ***
     public Tile(char character, int points) {
         this.character = character;
         this.points = points;
 
     }
+
+    // *** Methods ***
 
     public char getCharacter() {
         return character;

@@ -2,7 +2,7 @@ package main.java.display;
 
 import java.util.Scanner;
 
-public class PlayerInput {
+public class ScrabbleInput {
 
     // *** Attributes ***
 
@@ -16,7 +16,7 @@ public class PlayerInput {
 
     // *** Constructor ***
 
-    public PlayerInput() {
+    public ScrabbleInput() {
     }
 
     // *** Methods ***

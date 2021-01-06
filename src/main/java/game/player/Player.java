@@ -4,7 +4,7 @@ import main.java.game.*;
 
 public class Player {
 
-    // Attributes
+    // *** Attributes ***
     protected final ScrabbleGame scrabbleGame;
 
     protected final int number;
@@ -17,7 +17,7 @@ public class Player {
 
     protected Turn turnCurrent;
 
-    // Constructor
+    // *** Constructor ***
 
 
     public Player(ScrabbleGame scrabbleGame, int number) {
@@ -29,7 +29,7 @@ public class Player {
         this.rack.fill(scrabbleGame.getBag());
     }
 
-    // Methods
+    // *** Methods ***
 
     /**
      *

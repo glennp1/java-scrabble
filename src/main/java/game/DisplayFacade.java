@@ -15,25 +15,34 @@ import java.util.ArrayList;
 public class DisplayFacade {
 
     // *** Attributes ***
+    /**
+     *
+     */
     private static DisplayFacade instance = null;
 
-    private final BoardDisplay boardDisplay = new BoardDisplay();
-    private final PlayerTurnDisplay playerTurnDisplay = new PlayerTurnDisplay();
-    private final PlayerScoreDisplay playerScoreDisplay = new PlayerScoreDisplay();
-    private final PlayerRackDisplay playerRackDisplay = new PlayerRackDisplay();
+    /**
+     *
+     */
+    private final ScrabbleInput scrabbleInput = new ScrabbleInput();
 
-    private final PlayerInput playerInput = new PlayerInput();
-
-    private final WinnerDisplay winnerDisplay = new WinnerDisplay();
-
-    private final ErrorDisplay errorDisplay = new ErrorDisplay();
+    /**
+     *
+     */
+    private final ScrabbleOutput scrabbleOutput = new ScrabbleOutput();
 
     // *** Constructor ***
+    /**
+     *
+     */
     private DisplayFacade() {
 
     }
 
-    // *** Method ***
+    // *** Methods ***
+    /**
+     *
+     * @return
+     */
     public static DisplayFacade getInstance() {
         if (instance == null) {
             instance = new DisplayFacade();
@@ -41,93 +50,148 @@ public class DisplayFacade {
         return instance;
     }
 
+    /**
+     *
+     * @param board
+     * @param player
+     */
     public void renderBoardAndPlayer(Board board, Player player) {
         renderBoard(board);
         renderPlayerRack(player);
         renderPlayerScore(player);
     }
 
-
+    /**
+     *
+     * @param board
+     */
     public void renderBoard(Board board) {
 
         char[][] formattedBoard = board.formatForDisplay();
 
-        boardDisplay.render(formattedBoard);
+        scrabbleOutput.outputBoard(formattedBoard);
     }
 
-    public void renderPlayerStartTurn(Player player) {
-        int playerNumber = player.getNumber();
-
-        playerTurnDisplay.renderStart(playerNumber);
-    }
-
-    public void renderPlayerScore(Player player) {
-        int playerNumber = player.getNumber();
-        int playerScore = player.getScore();
-
-        playerScoreDisplay.render(playerNumber, playerScore);
-    }
-
+    /**
+     *
+     * @param player
+     */
     public void renderPlayerRack(Player player) {
 
         ArrayList<Character> formattedRack = player.getRack().formatForDisplay();
         int playerNumber = player.getNumber();
 
-        playerRackDisplay.render(playerNumber, formattedRack);
+        scrabbleOutput.outputPlayerRack(playerNumber, formattedRack);
 
     }
 
-    public void renderPlayerEndTurn(Player player) {
+    /**
+     *
+     * @param player
+     */
+    public void renderPlayerScore(Player player) {
         int playerNumber = player.getNumber();
+        int playerScore = player.getScore();
 
-        playerTurnDisplay.renderEnd(playerNumber);
+        scrabbleOutput.outputPlayerScore(playerNumber, playerScore);
     }
 
+    /**
+     *
+     * @param player
+     * @param word
+     */
     public void renderWordPoints(Player player, Word word) {
         int playerNumber = player.getNumber();
         String wordAsString = word.toString();
         int points = word.getPoints();
 
-        playerScoreDisplay.renderWordPoints(playerNumber, wordAsString, points);
+        scrabbleOutput.outputPlayerWordPoints(playerNumber, wordAsString, points);
     }
 
-
-    public boolean requestPassInput() {
-        return playerInput.inputPass();
-    }
-
-    // todo split this up
     /**
      *
-     * @return if the turn is over
+     * @param player
      */
-    public char requestCharInput() {
-        return playerInput.inputChar();
+    public void renderPlayerStartTurn(Player player) {
+        int playerNumber = player.getNumber();
+
+        scrabbleOutput.outputPlayerStartTurn(playerNumber);
     }
 
-    public int requestRowInput() {
-        return playerInput.inputRow();
+    /**
+     *
+     * @param player
+     */
+    public void renderPlayerEndTurn(Player player) {
+        int playerNumber = player.getNumber();
+
+        scrabbleOutput.outputPlayerEndTurn(playerNumber);
     }
 
-    public int requestColInput() {
-        return playerInput.inputCol();
-    }
-
-    public boolean requestTurnFinished() {
-        return playerInput.inputTurnFinished();
-    }
-
+    /**
+     *
+     * @param winner
+     */
     public void renderWinner (Player winner) {
         int playerNumber = winner.getNumber();
 
-        winnerDisplay.render(playerNumber);
+        scrabbleOutput.outputWinner(playerNumber);
     }
 
+    /**
+     *
+     */
     public void renderDraw(){
-        winnerDisplay.renderDraw();
+        scrabbleOutput.outputDraw();
     }
 
+    /**
+     *
+     * @param error
+     */
     public void renderError(String error) {
-        errorDisplay.render(error);
+        scrabbleOutput.outputError(error);
     }
+
+    /**
+     *
+     * @return
+     */
+    public boolean requestPassInput() {
+        return scrabbleInput.inputPass();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public char requestCharInput() {
+        return scrabbleInput.inputChar();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int requestRowInput() {
+        return scrabbleInput.inputRow();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int requestColInput() {
+        return scrabbleInput.inputCol();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public boolean requestTurnFinished() {
+        return scrabbleInput.inputTurnFinished();
+    }
+
 }

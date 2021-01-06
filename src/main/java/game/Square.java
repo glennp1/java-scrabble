@@ -6,13 +6,13 @@ import java.util.LinkedList;
 
 public class Square {
 
-    // Attributes
+    // *** Attributes ***
     private Tile tile;
     private int points;
     private int row;
     private int col;
     private Board board;
-    // Constructor
+    // *** Constructor ***
 
     public Square(Tile tile, int points, int row, int col, Board board) {
         this.tile = tile;
@@ -22,7 +22,7 @@ public class Square {
         this.board = board;
     }
 
-    // Methods
+    // *** Methods ***
 
 
 
