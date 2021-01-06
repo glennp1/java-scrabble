@@ -1,25 +1,43 @@
 package game;
 
+/**
+ * <p></p>
+ * <p></p>
+ */
 public class Board {
 
     // *** Constants ***
+    /**
+     *
+     */
     public static final int NUM_ROWS = 15;
 
+    /**
+     *
+     */
     public static final int NUM_COLS = 15;
 
     // *** Attributes ***
+    /**
+     *
+     */
+    private final Square[][] squaresGrid;
 
-    private Square[][] squaresGrid;
-
+    /**
+     *
+     */
     private final SquareFactory squareFactory = new SquareFactory(this);
 
     // *** Constructor ***
+
+    /**
+     *
+     */
     public Board() {
         squaresGrid = squareFactory.getNewSquaresGrid();
     }
 
     // *** Methods ***
-
     /**
      * Gets a specific square on the board, specified
      * by a row and a column
@@ -27,7 +45,6 @@ public class Board {
      * @param row
      * @param col
      */
-
     public Square getSquareByCoords(int row, int col) {
         // If the coords are not valid, return null
         if (!checkCoordsValid(row, col)) {
@@ -37,7 +54,12 @@ public class Board {
         return squaresGrid[row][col];
     }
 
-
+    /**
+     *
+     * @param row
+     * @param col
+     * @return
+     */
     public boolean checkCoordsValid(int row, int col) {
         // Return false if the row is outside the bounds
         if (row < 0 || col >= Board.NUM_ROWS) {
@@ -69,6 +91,10 @@ public class Board {
         return boardFormatted;
     }
 
+    /**
+     *
+     * @return
+     */
     public Board createBackup() {
         Board boardBackup = new Board();
         Tile tileCurrent;
@@ -86,6 +112,10 @@ public class Board {
         return boardBackup;
     }
 
+    /**
+     *
+     * @param boardBackup
+     */
     public void restoreBackup(Board boardBackup) {
         Tile tileBackup;
 

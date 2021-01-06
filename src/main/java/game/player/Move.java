@@ -3,9 +3,13 @@ package game.player;
 import game.*;
 
 /**
- * Handles the input of, storage of and execution of
- * a single set of commands relating to a player's turn
+ * <p>Handles the input of, storage of and execution of
+ * a single set of commands relating to a player's turn</p>
+ * <p>In future this class may be made into a superclass
+ * with two subclasses, one to represent a human move
+ * and the other to represent a npc move</p>
  */
+
 public class Move {
 
     // *** Constants ***

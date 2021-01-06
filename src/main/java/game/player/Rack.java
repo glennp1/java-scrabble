@@ -5,15 +5,28 @@ import game.Tile;
 
 import java.util.ArrayList;
 
+/**
+ * <p></p>
+ * <p></p>
+ */
 public class Rack {
 
     // *** Constants ***
+    /**
+     *
+     */
     private static final int MAX_RACK_SIZE = 7;
 
     // *** Attributes ***
+    /**
+     *
+     */
     private final ArrayList<Tile> tiles = new ArrayList<>();
 
     // *** Constructor ***
+    /**
+     *
+     */
     public Rack() {
     }
 
@@ -101,6 +114,10 @@ public class Rack {
         return rackFormatted;
     }
 
+    /**
+     *
+     * @return
+     */
     public Rack createBackup() {
         Rack rackBackup = new Rack();
 
@@ -111,12 +128,12 @@ public class Rack {
         return rackBackup;
     }
 
+    /**
+     *
+     * @param rackBackup
+     */
     public void restoreBackup(Rack rackBackup) {
         this.tiles.clear();
         this.tiles.addAll(rackBackup.tiles);
     }
-
-
-
-
 }

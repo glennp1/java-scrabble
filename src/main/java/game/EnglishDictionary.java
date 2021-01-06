@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Singleton class that provides a consistent,
+ * <p>Stores the english dictionary and verifies if words
+ * are contained within it.</p>
+ * <p>Singleton class provides a consistent,
  * global and single point of access to the english dictionary.
  * This ensures that words can easily be checked if they are valid,
- * regardless of the class
+ * regardless of the class.</p>
  */
 public class EnglishDictionary {
 

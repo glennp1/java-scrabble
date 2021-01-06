@@ -2,25 +2,50 @@ package game.player;
 
 import game.*;
 
+/**
+ * <p></p>
+ * <p></p>
+ */
 public class Player {
 
     // *** Constants ***
+    /**
+     *
+     */
     private static final int STARTING_SCORE = 0;
 
     // *** Attributes ***
+    /**
+     *
+     */
     private final ScrabbleGame scrabbleGame;
 
+    /**
+     *
+     */
     private final int number;
 
+    /**
+     *
+     */
     private int score = STARTING_SCORE;
 
+    /**
+     *
+     */
     private final Rack rack;
 
+    /**
+     *
+     */
     private Turn turnCurrent;
 
     // *** Constructor ***
-
-
+    /**
+     *
+     * @param scrabbleGame
+     * @param number
+     */
     public Player(ScrabbleGame scrabbleGame, int number) {
         this.scrabbleGame = scrabbleGame;
         this.number = number;
@@ -31,7 +56,6 @@ public class Player {
     }
 
     // *** Methods ***
-
     /**
      *
      * @return
@@ -51,18 +75,6 @@ public class Player {
         rack.fill(scrabbleGame.getBag());
 
         return successful;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public Rack getRack() {
-        return rack;
-    }
-
-    public int getScore() {
-        return score;
     }
 
     /**
@@ -85,5 +97,29 @@ public class Player {
         // Display the updated score
         display.renderPlayerScore(this);
 
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getNumber() {
+        return number;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Rack getRack() {
+        return rack;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getScore() {
+        return score;
     }
 }

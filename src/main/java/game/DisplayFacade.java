@@ -7,10 +7,12 @@ import game.player.Word;
 import java.util.ArrayList;
 
 /**
- * Facade and Singleton class that provides a consistent,
+ * <p>Enables the game to render and request input
+ * without any associations to the display logic </p>
+ * <p>Facade and Singleton class that provides a consistent,
  * global and single point of access to the Display.
  * This ensures that if the Display changes the game can
- * continue to function uninterrupted (Protected Variations).
+ * continue to function uninterrupted (Protected Variations). </p>
  */
 public class DisplayFacade {
 

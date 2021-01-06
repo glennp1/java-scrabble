@@ -4,18 +4,38 @@ import game.Square;
 
 import java.util.LinkedList;
 
+/**
+ * <p></p>
+ * <p></p>
+ */
 public class Word {
 
     // *** Constants ***
 
     // *** Attributes ***
+    /**
+     *
+     */
     private final LinkedList<Square> squaresInWord = new LinkedList<>();
 
     // True if horizontal, false if vertical
+    /**
+     *
+     */
     private final boolean isHorizontal;
+
+    /**
+     *
+     */
     private final Square startingSquare;
 
     // *** Constructor ***
+
+    /**
+     *
+     * @param startingSquare
+     * @param isHorizontal
+     */
     public Word(Square startingSquare, boolean isHorizontal) {
         this.isHorizontal = isHorizontal;
         this.startingSquare = startingSquare;
@@ -25,6 +45,9 @@ public class Word {
 
     // *** Methods ***
 
+    /**
+     *
+     */
     private void populateWord() {
         // If the word is horizontal, add the squares to the left,
         // add the starting square and add those to the right
@@ -103,6 +126,10 @@ public class Word {
         return totalPoints;
     }
 
+    /**
+     *
+     * @return
+     */
     public LinkedList<Square> getSquaresInWord() {
         return squaresInWord;
     }

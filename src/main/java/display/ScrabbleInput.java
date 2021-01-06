@@ -2,27 +2,47 @@ package display;
 
 import java.util.Scanner;
 
+/**
+ * <p></p>
+ * <p></p>
+ */
 public class ScrabbleInput {
 
     // *** Constants ***
-
-    // Included so that matrices start at 0 not 1
+    /**
+     * Row offset included so that matrices start at 0 not 1
+     */
     private static final int ROW_OFFSET = 1;
 
+    /**
+     *
+     */
     private static final int FIRST_POSITION = 0;
 
+    /**
+     *
+     */
     private static final char START_OF_ALPHABET = 'a';
+
+    /**
+     *
+     */
     private static final String YES = "y";
 
     // *** Attributes ***
 
     // *** Constructor ***
-
+    /**
+     *
+     */
     public ScrabbleInput() {
     }
 
     // *** Methods ***
-
+    /**
+     *
+     * @return
+     */
     public boolean inputPass() {
 
         String userInput = processInput(
@@ -33,6 +53,10 @@ public class ScrabbleInput {
         return userInput.equals(YES);
     }
 
+    /**
+     *
+     * @return
+     */
     public char inputChar() {
 
         String userInput = processInput(
@@ -43,6 +67,10 @@ public class ScrabbleInput {
         return userInput.charAt(FIRST_POSITION);
     }
 
+    /**
+     *
+     * @return
+     */
     public int inputRow() {
 
         String userInput = processInput(
@@ -53,6 +81,10 @@ public class ScrabbleInput {
         return Integer.parseInt(userInput) - ROW_OFFSET;
     }
 
+    /**
+     *
+     * @return
+     */
     public int inputCol() {
 
         String userInput = processInput(
@@ -65,6 +97,10 @@ public class ScrabbleInput {
         return userInputChar - START_OF_ALPHABET;
     }
 
+    /**
+     * 
+     * @return
+     */
     public boolean inputTurnFinished() {
 
         String userInput = processInput(

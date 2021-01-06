@@ -3,32 +3,49 @@ package display;
 import java.util.ArrayList;
 
 /**
- * Handles the output of the scrabble game to the console.
- * Has been separated from the game logic in case changes are made in the future
+ * <p>Handles the output of the scrabble game to the console.</p>
+ * <p>Has been separated from the game logic in case changes are
+ * made in the future</p>
  */
 public class ScrabbleOutput {
 
     // *** Constants ***
-
+    /**
+     *
+     */
     private static final String BOARD_HEADER =
             "\n" +
                     "     ________ Board-Start ________ \n" +
                     "     a b c d e f g h i j k l m n o \n" +
                     "     _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n";
 
+    /**
+     *
+     */
     private static final String BOARD_FOOTER =
             "     _________ Board-End__________ \n\n";
 
+    /**
+     *
+     */
     private static final int FIRST_ROW = 1;
 
     // *** Attributes ***
 
     // *** Constructor ***
 
+    /**
+     *
+     */
     public ScrabbleOutput() {
     }
 
     // *** Methods ***
+
+    /**
+     *
+     * @param formattedBoard
+     */
     public void outputBoard(char[][] formattedBoard) {
 
         System.out.print(BOARD_HEADER);
@@ -51,6 +68,11 @@ public class ScrabbleOutput {
         System.out.print(BOARD_FOOTER);
     }
 
+    /**
+     *
+     * @param playerNumber
+     * @param rackAsCharArray
+     */
     public void outputPlayerRack(int playerNumber, ArrayList<Character> rackAsCharArray) {
         System.out.print("Player " + playerNumber + "'s rack: ");
 
@@ -67,33 +89,63 @@ public class ScrabbleOutput {
         System.out.print("\n");
     }
 
+    /**
+     *
+     * @param playerNumber
+     * @param playerScore
+     */
     public void outputPlayerScore(int playerNumber, int playerScore) {
         System.out.printf("Player %d's score: %d\n", playerNumber, playerScore);
     }
 
+    /**
+     *
+     * @param playerNumber
+     * @param word
+     * @param points
+     */
     public void outputPlayerWordPoints(int playerNumber, String word, int points) {
         System.out.printf("Player %d formed %s for %d points.\n",
                 playerNumber, word, points);
     }
 
+    /**
+     *
+     * @param playerNumber
+     */
     public void outputPlayerStartTurn(int playerNumber) {
         System.out.printf("\nIt is Player %d's turn.\n", playerNumber);
     }
 
+    /**
+     *
+     * @param playerNumber
+     */
     public void outputPlayerEndTurn(int playerNumber) {
         System.out.printf("Player %d has ended their turn.\n", playerNumber);
 
     }
 
+    /**
+     *
+     * @param playerNumber
+     */
     public void outputWinner(int playerNumber) {
 
         System.out.printf("\n The winner is player %d!\n", playerNumber);
     }
 
+    /**
+     *
+     */
     public void outputDraw() {
         System.out.println("\n It's a draw!");
     }
 
+    /**
+     *
+     * @param error
+     */
     public void outputError(String error) {
         System.out.println("Error: " + error);
     }

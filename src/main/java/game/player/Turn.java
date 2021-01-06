@@ -4,41 +4,74 @@ import game.*;
 
 import java.util.LinkedList;
 
+/**
+ * <p></p>
+ * <p></p>
+ */
 public class Turn {
 
     // *** Constants ***
 
-
     // *** Attributes ***
-
+    /**
+     *
+     */
     private final Player player;
+
+    /**
+     *
+     */
     private final Board boardCurrent;
+
+    /**
+     *
+     */
     private final Rack rackCurrent;
 
+    /**
+     *
+     */
     private final Board boardAtStart;
+
+    /**
+     *
+     */
     private final Rack rackAtStart;
 
-    // Stores if it is the first turn of the game
+    /**
+     * Stores if it is the first turn of the game
+     */
     private final boolean firstTurn;
 
-    // A set of moves completed by the player
+    /**
+     * A set of moves completed by the player
+     */
     private LinkedList<Move> movesCompleted = new LinkedList<>();
 
-    // A set of words formed by the player
+    /**
+     * A set of words formed by the player
+     */
     private LinkedList<Word> wordsFormed = new LinkedList<>();
 
     // *** Constructor ***
+
+    /**
+     *
+     * @param board
+     * @param player
+     * @param firstTurn
+     */
     public Turn(Board board, Player player, boolean firstTurn) {
 
         // Initialise
         this.player = player;
         boardCurrent = board;
-        rackCurrent = player.rack;
+        rackCurrent = player.getRack();
         this.firstTurn = firstTurn;
 
         // Create backups of board and rack
         boardAtStart = board.createBackup();
-        rackAtStart = player.rack.createBackup();
+        rackAtStart = player.getRack().createBackup();
     }
 
     // *** Methods ***
@@ -95,7 +128,9 @@ public class Turn {
         return display.requestPassInput();
     }
 
-    // selectAllMoves
+    /**
+     *
+     */
     private void selectAllMoves() {
         do {
             DisplayFacade.getInstance().renderBoardAndPlayer(boardCurrent, player);
@@ -114,7 +149,10 @@ public class Turn {
         while (!DisplayFacade.getInstance().requestTurnFinished());
     }
 
-    // reset turn
+
+    /**
+     *
+     */
     private void reset() {
         // Restore the board and the rack from their respective backups
         boardCurrent.restoreBackup(boardAtStart);
@@ -124,7 +162,10 @@ public class Turn {
         movesCompleted = new LinkedList<>();
     }
 
-
+    /**
+     *
+     * @return
+     */
     private boolean allMovesAreValid() {
         // If the moves are not connect appropriately, they are not valid
         if (!allMovesAreConnected()) {
@@ -140,6 +181,10 @@ public class Turn {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     private boolean wordsFormedAreValid() {
         DisplayFacade display = DisplayFacade.getInstance();
         EnglishDictionary englishDictionary = EnglishDictionary.getInstance();
@@ -245,6 +290,10 @@ public class Turn {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     private boolean checkMovesHorizontal() {
         // Get rows of the first two moves
         int rowFirstMove = movesCompleted.getFirst().getSquareSelected().getRow();
@@ -303,6 +352,10 @@ public class Turn {
         return false;
     }
 
+    /**
+     *
+     * @return
+     */
     private LinkedList<Word> findPotentialWords() {
         // New linked list of potential words
         LinkedList<Word> potentialWords = new LinkedList<>();
@@ -329,17 +382,26 @@ public class Turn {
         return potentialWords;
     }
 
-
-        // todo update the words formed in the process??
-
+    /**
+     *
+     * @return
+     */
     public Board getBoardCurrent() {
         return boardCurrent;
     }
 
+    /**
+     *
+     * @return
+     */
     public Rack getRackCurrent() {
         return rackCurrent;
     }
 
+    /**
+     *
+     * @return
+     */
     public LinkedList<Square> getMovesCompletedSquares() {
         LinkedList<Square> squares = new LinkedList<>();
         for (Move move : movesCompleted) {
@@ -348,10 +410,10 @@ public class Turn {
         return squares;
     }
 
-    public LinkedList<Move> getMovesCompleted() {
-        return movesCompleted;
-    }
-
+    /**
+     *
+     * @return
+     */
     public LinkedList<Word> getWordsFormed() {
         return wordsFormed;
     }
