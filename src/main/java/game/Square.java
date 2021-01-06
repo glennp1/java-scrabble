@@ -87,6 +87,26 @@ public class Square {
     }
 
     /**
+     * Returns if the square forms a row, that is, it has a square with a tile in it
+     * either to the left or to the right
+     *
+     * @return true if forms a row, false otherwise
+     */
+    public boolean formsRow() {
+        return hasTile(getSquareLeft()) || hasTile(getSquareRight());
+    }
+
+    /**
+     * Returns if the square forms a column, that is, it has a square with a tile in it
+     * either above or below
+     *
+     * @return true if forms a column, false otherwise
+     */
+    public boolean formsColumn() {
+        return hasTile(getSquareAbove()) || hasTile(getSquareBelow());
+    }
+
+    /**
      * Returns the all neighbouring squares that have tiles in them
      *
      * @return a linked list of neighbouring squares that have a tile
@@ -107,26 +127,6 @@ public class Square {
             neighbours.add(getSquareBelow());
         }
         return neighbours;
-    }
-
-    /**
-     * Returns if the square forms a row, that is, it has a square with a tile in it
-     * either to the left or to the right
-     *
-     * @return true if forms a row, false otherwise
-     */
-    public boolean formsRow() {
-        return hasTile(getSquareLeft()) || hasTile(getSquareRight());
-    }
-
-    /**
-     * Returns if the square forms a column, that is, it has a square with a tile in it
-     * either above or below
-     *
-     * @return true if forms a column, false otherwise
-     */
-    public boolean formsColumn() {
-        return hasTile(getSquareAbove()) || hasTile(getSquareBelow());
     }
 
     /**
@@ -250,31 +250,6 @@ public class Square {
     }
 
     /**
-     * Returns if the square has a tile, this cannot be used on a null object
-     *
-     * @return true if the square has a tile, false otherwise
-     */
-    public boolean hasTile() {
-        return tile != null;
-    }
-
-    /**
-     * Returns if a specified square has a tile, can handle a square that is null
-     * This is very useful for when specified square cannot be found
-     *
-     * @param square a specified square, can be null
-     * @return true if the square exists and has a tile, false otherwise
-     */
-    private static boolean hasTile(Square square) {
-        // If the square doesn't exist then return false
-        if (square == null ) {
-            return false;
-        }
-        // Otherwise return if there is a tile or not
-        return square.tile != null;
-    }
-
-    /**
      * Gets the character corresponding to the square's tile. In the event the tile is
      * null, the "_" character is returned instead
      *
@@ -286,6 +261,31 @@ public class Square {
         } else {
             return '_';
         }
+    }
+
+    /**
+     * Returns if a specified square has a tile, can handle a square that is null
+     * This is very useful for when specified square cannot be found
+     *
+     * @param square a specified square, can be null
+     * @return true if the square exists and has a tile, false otherwise
+     */
+    public static boolean hasTile(Square square) {
+        // If the square doesn't exist then return false
+        if (square == null ) {
+            return false;
+        }
+        // Otherwise return if there is a tile or not
+        return square.tile != null;
+    }
+
+    /**
+     * Returns if the square has a tile, this cannot be used on a null object
+     *
+     * @return true if the square has a tile, false otherwise
+     */
+    public boolean hasTile() {
+        return tile != null;
     }
 
     /**
