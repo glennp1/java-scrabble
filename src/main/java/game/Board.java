@@ -1,37 +1,40 @@
 package game;
 
 /**
- * <p></p>
- * <p></p>
+ * <p>Stores all of the squares in the game and is used to access them</p>
+ * <p>The creation logic of each of the squares is instead handled
+ * by square factory</p>
  */
 public class Board {
 
     // *** Constants ***
     /**
-     *
+     * The number of rows on the board
      */
     public static final int NUM_ROWS = 15;
 
     /**
-     *
+     * The number of columns on the board
      */
     public static final int NUM_COLS = 15;
 
     // *** Attributes ***
     /**
-     *
+     * Stores all of the squares in a two dimensional array
      */
     private final Square[][] squaresGrid;
 
     /**
-     *
+     * Stores an instance of the square factory, responsible for creating
+     * the squares on the board
      */
     private final SquareFactory squareFactory = new SquareFactory(this);
 
     // *** Constructor ***
 
     /**
-     *
+     * Creates an instance of the board and populates the squares with the
+     * help of the square factory
      */
     public Board() {
         squaresGrid = squareFactory.getNewSquaresGrid();
@@ -55,10 +58,12 @@ public class Board {
     }
 
     /**
+     * Returns if a set of coordinates are valid, that is,
+     * they are inside the bounds of the squares grid
      *
-     * @param row
-     * @param col
-     * @return
+     * @param row the row to validate
+     * @param col the column to validate
+     * @return true if both the row and column are valid, false otherwise
      */
     public boolean checkCoordsValid(int row, int col) {
         // Return false if the row is outside the bounds
@@ -76,8 +81,11 @@ public class Board {
     }
 
     /**
+     * Returns the all the squares on the board formatted as a
+     * two dimensional array of characters
+     * This is so that they can be displayed
      *
-     * @return
+     * @return two dimensional array of characters on the board
      */
     public char[][] formatForDisplay() {
         char[][] boardFormatted = new char[NUM_ROWS][NUM_COLS];
@@ -92,8 +100,11 @@ public class Board {
     }
 
     /**
+     * Creates and returns a backup of the current board
+     * This is used in case a players turn is invalid and the
+     * game needs to be rolled back
      *
-     * @return
+     * @return a partial clone of the current board
      */
     public Board createBackup() {
         Board boardBackup = new Board();
@@ -113,8 +124,11 @@ public class Board {
     }
 
     /**
+     * Restores the current board from a specified board backup,
+     * this is invoke when the game needs to be rolled back due to
+     * an invalid set of moves
      *
-     * @param boardBackup
+     * @param boardBackup the old board that is restored
      */
     public void restoreBackup(Board boardBackup) {
         Tile tileBackup;

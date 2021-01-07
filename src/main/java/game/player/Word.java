@@ -5,8 +5,9 @@ import game.Square;
 import java.util.LinkedList;
 
 /**
- * <p></p>
- * <p></p>
+ * <p>Represents a word on the the scrabble board</p>
+ * <p>Is used both for completed words and also to help validate
+ * moves that a player makes</p>
  */
 public class Word {
 
@@ -14,27 +15,30 @@ public class Word {
 
     // *** Attributes ***
     /**
-     *
+     * The squares on the board that make up the given word
      */
     private final LinkedList<Square> squaresInWord = new LinkedList<>();
 
-    // True if horizontal, false if vertical
     /**
-     *
+     * The direction of the word, true if horizontal, false if vertical
      */
     private final boolean isHorizontal;
 
     /**
-     *
+     * The square that a word starts at, the remaining squares
+     * are automatically found and added
      */
     private final Square startingSquare;
 
     // *** Constructor ***
 
     /**
+     * Creates a new word instance, based on both the starting square
+     * and the direction of the word. These two parameters are used
+     * to then populate the word (see method)
      *
-     * @param startingSquare
-     * @param isHorizontal
+     * @param startingSquare the square the word starts at
+     * @param isHorizontal the direction of the word
      */
     public Word(Square startingSquare, boolean isHorizontal) {
         this.isHorizontal = isHorizontal;
@@ -44,9 +48,10 @@ public class Word {
     }
 
     // *** Methods ***
-
     /**
-     *
+     * Populates all of the squares in a give word by starting at the
+     * starting square and finding the adjacent squares in the same
+     * column / row
      */
     private void populateWord() {
         // If the word is horizontal, add the squares to the left,
@@ -66,7 +71,8 @@ public class Word {
     }
 
     /**
-     * Converts an instance of the word class to a string
+     * Converts an instance of the word class to a string, so that it
+     * can be outputted
      *
      * @return a string representation of the word
      */
@@ -127,8 +133,9 @@ public class Word {
     }
 
     /**
+     * Getter for squares in word, used within turn
      *
-     * @return
+     * @return The squares on the board that make up the given word
      */
     public LinkedList<Square> getSquaresInWord() {
         return squaresInWord;
