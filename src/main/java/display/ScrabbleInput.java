@@ -3,8 +3,10 @@ package display;
 import java.util.Scanner;
 
 /**
- * <p></p>
- * <p></p>
+ * <p>Handles the input console to the scrabble game.</p>
+ * <p>Has been separated from the game logic in case changes are
+ * made in the future. Is currently a class rather than an
+ * interface but could be either depending on implementation</p>
  */
 public class ScrabbleInput {
 
@@ -15,17 +17,18 @@ public class ScrabbleInput {
     private static final int ROW_OFFSET = 1;
 
     /**
-     *
+     * The first position of all matrices is 0 not 1
      */
     private static final int FIRST_POSITION = 0;
 
     /**
-     *
+     * The first letter in the alphabet, used in character calculations
      */
     private static final char START_OF_ALPHABET = 'a';
 
     /**
-     *
+     * A string representation of yes, used by both input pass and
+     * input turn finished
      */
     private static final String YES = "y";
 
@@ -33,15 +36,16 @@ public class ScrabbleInput {
 
     // *** Constructor ***
     /**
-     *
+     * Creates an instance of the scrabble input
      */
     public ScrabbleInput() {
     }
 
     // *** Methods ***
     /**
+     * Requests if the player wishes to pass
      *
-     * @return
+     * @return true if the player wishes to pass, false otherwise
      */
     public boolean inputPass() {
 
@@ -54,8 +58,10 @@ public class ScrabbleInput {
     }
 
     /**
+     * Requests the player to input a character from their rack that
+     * they wish to place
      *
-     * @return
+     * @return the character selected
      */
     public char inputChar() {
 
@@ -68,8 +74,10 @@ public class ScrabbleInput {
     }
 
     /**
+     * Requests the player to input a row they wish to place
+     * their selected character
      *
-     * @return
+     * @return the row selected
      */
     public int inputRow() {
 
@@ -82,8 +90,10 @@ public class ScrabbleInput {
     }
 
     /**
+     * Requests the player to input a column they wish to place
+     * their selected character
      *
-     * @return
+     * @return the column selected
      */
     public int inputCol() {
 
@@ -98,8 +108,9 @@ public class ScrabbleInput {
     }
 
     /**
-     * 
-     * @return
+     * Requests if the player wishes to end their turn
+     *
+     * @return true if they wish to end, false otherwise
      */
     public boolean inputTurnFinished() {
 
@@ -112,11 +123,14 @@ public class ScrabbleInput {
     }
 
     /**
+     * Returns a string that is inputted from the console following
+     * a given request. For the string to be returned, it must match
+     * the given regex, otherwise the user is prompted to enter
+     * the input again
      *
-     *
-     * @param request
-     * @param regex
-     * @return
+     * @param request the request to the user prior to input
+     * @param regex the regular expression that the input must match
+     * @return the string that is inputted
      */
     private String processInput(String request, String regex) {
 
