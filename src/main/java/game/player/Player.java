@@ -3,48 +3,53 @@ package game.player;
 import game.*;
 
 /**
- * <p></p>
- * <p></p>
+ * <p>Represents a player in the game,
+ * whom can take a turn when prompted </p>
+ * <p>In future this class may be made into a superclass
+ * with two subclasses, one to represent a human player
+ * and the other to represent a npc player</p>
  */
 public class Player {
 
     // *** Constants ***
     /**
-     *
+     * The starting score of all players
      */
     private static final int STARTING_SCORE = 0;
 
     // *** Attributes ***
     /**
-     *
+     * The game the player belongs to
      */
     private final ScrabbleGame scrabbleGame;
 
     /**
-     *
+     * The player's number, player one = 1 etc...
      */
     private final int number;
 
     /**
-     *
+     * The player's score, increased when words are completed
      */
     private int score = STARTING_SCORE;
 
     /**
-     *
+     * The players rack, containing all of their tiles
      */
     private final Rack rack;
 
     /**
-     *
+     * The player's current turn
      */
     private Turn turnCurrent;
 
     // *** Constructor ***
     /**
+     * Creates a new instance of the player class, then initialises the
+     * parameters and fills the players rack so they are ready for play
      *
-     * @param scrabbleGame
-     * @param number
+     * @param scrabbleGame the game the player belongs to
+     * @param number the players number, starts at 1
      */
     public Player(ScrabbleGame scrabbleGame, int number) {
         this.scrabbleGame = scrabbleGame;
@@ -57,8 +62,11 @@ public class Player {
 
     // *** Methods ***
     /**
+     * Prompts the player to take their turn, taking into account if it
+     * is the first turn of the game, then returning if the turn is
+     * successful, that is, they did not pass
      *
-     * @return
+     * @return true if the turn is successful, false if they passed
      */
     public boolean takeTurn(boolean firstTurn) {
         // Start a new turn for the player
@@ -100,24 +108,27 @@ public class Player {
     }
 
     /**
+     * Getter for the player's number, used by display
      *
-     * @return
+     * @return the player's number
      */
     public int getNumber() {
         return number;
     }
 
     /**
+     * Getter for the player's rack, used by display and turn backups
      *
-     * @return
+     * @return the player's rack containing all of their tiles
      */
     public Rack getRack() {
         return rack;
     }
 
     /**
+     * Getter for the player's score, used by display
      *
-     * @return
+     * @return the player's score
      */
     public int getScore() {
         return score;

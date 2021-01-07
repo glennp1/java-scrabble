@@ -9,6 +9,9 @@ import java.util.LinkedList;
  * <p>Prompts the player to enter their moves and ensures they are valid.
  * In the even moves are not valid a rollback of the game is performed
  * and the player is prompted to enter their moves again</p>
+ * <p>In future this class may be made into a superclass
+ * with two subclasses, one to represent a human turn
+ * and the other to represent a npc turn</p>
  */
 public class Turn {
 

@@ -6,26 +6,27 @@ import game.Tile;
 import java.util.ArrayList;
 
 /**
- * <p></p>
- * <p></p>
+ * <p>Stores and handles the tiles in a player's rack</p>
+ * <p>To fill, tiles are withdrawn from the bag, tiles are then
+ * removed when they are played onto the board</p>
  */
 public class Rack {
 
     // *** Constants ***
     /**
-     *
+     * The maximum number of tiles that can be stored in a rack
      */
     private static final int MAX_RACK_SIZE = 7;
 
     // *** Attributes ***
     /**
-     *
+     * An array list of all the tiles in the player's rack
      */
     private final ArrayList<Tile> tiles = new ArrayList<>();
 
     // *** Constructor ***
     /**
-     *
+     * Creates a new instance of the rack class
      */
     public Rack() {
     }
@@ -33,6 +34,7 @@ public class Rack {
     // *** Methods ***
     /**
      * Fill the player's rack from the bag based on the number of tiles missing
+     * In the even the bag is empty, no more tiles will be added
      */
     public void fill(Bag bag) {
         Tile tileToAdd;
@@ -115,8 +117,10 @@ public class Rack {
     }
 
     /**
+     * Creates and returns a backup of the rack, used for rollbacks when a turn
+     * is invalid
      *
-     * @return
+     * @return a backup of the rack
      */
     public Rack createBackup() {
         Rack rackBackup = new Rack();
@@ -129,8 +133,9 @@ public class Rack {
     }
 
     /**
+     * Restores the tiles in the rack based on a backup
      *
-     * @param rackBackup
+     * @param rackBackup the backup rack to restore
      */
     public void restoreBackup(Rack rackBackup) {
         this.tiles.clear();
