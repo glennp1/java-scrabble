@@ -167,6 +167,9 @@ public class Turn {
 
         // Reset the completed moves
         movesCompleted = new LinkedList<>();
+
+        // Reset the words formed
+        wordsFormed = new LinkedList<>();
     }
 
     /**
