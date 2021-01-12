@@ -15,7 +15,7 @@ public class TileFactory {
     /**
      * The number of starting tiles, currently fixed at 100
      */
-    private static final int NUM_START_TILES = 100;
+    public static final int NUM_START_TILES = 100;
 
     /**
      * The first letter in the alphabet, used in character calculations
@@ -32,6 +32,16 @@ public class TileFactory {
      * For now this is a constant, this may be changed in future.
      */
     private static final int DEFAULT_TILE_POINTS = 1;
+
+    /**
+     * The lower bound of the points assigned to a tile
+     */
+    private static final int TILE_POINTS_LOWER = 1;
+
+    /**
+     * The upper bound of the points assigned to a tile
+     */
+    private static final int TILE_POINTS_UPPER = 5;
 
     // *** Attributes ***
 
@@ -57,7 +67,7 @@ public class TileFactory {
         for (int i = 0; i < NUM_START_TILES; i++) {
 
             // Each tile is created with a random character and default tile point value
-            Tile newTile = new Tile(generateRandomCharacter(), DEFAULT_TILE_POINTS);
+            Tile newTile = new Tile(generateRandomCharacter(), generateRandomPoints());
             newTiles.add(newTile);
         }
 
@@ -81,6 +91,17 @@ public class TileFactory {
 
         // Typecast the character ASCII value as a character and return it
         return (char) characterValue;
+    }
+
+    /**
+     * Generate random points integer between the lower and the upper bound
+     *
+     * @return random points integer, used for instantiating the tile
+     */
+    private int generateRandomPoints() {
+        Random random = new Random();
+        return TILE_POINTS_LOWER +
+                random.nextInt(TILE_POINTS_UPPER);
     }
 
 

@@ -98,6 +98,8 @@ public class Player {
             // Update the player's score based on the word's points
             score += word.getPoints();
 
+            // todo print score for each tile
+
             // Display the update
             display.renderWordPoints(this, word);
         }
